@@ -1,8 +1,10 @@
 # Repositório de Artefatos e Código-Fonte
 
-* Repositório de Artefatos e Código-Fonte da Pesquisa e Dissertação de Mestrado Defendida em Agosto/2020 no Instituto Militar de Engenharia
+* Repositório de artefatos e código-fonte da dissertação apresentada ao Programa de Pós-graduação em Sistemas e Computação do Instituto Militar de Engenharia, como requisito parcial para a obtenção do título de Mestre em Ciências em Sistemas e Computação, defendida em 27 de agosto de 2020, no Instituto Militar de Engenharia, Rio de Janeiro - RJ, Brasil.
 
-## Título: Um sistema híbrido de criptografia para garantir a confidencialidade e o nãorepúdio sobre documentos eletrônicos armazenados em blockchain, no contextode defesa cibernética
+## Título da Dissertação
+
+* Um sistema híbrido de criptografia para garantir a confidencialidade e o nãorepúdio sobre documentos eletrônicos armazenados em blockchain, no contextode defesa cibernética.
 
 ### Autor
 
@@ -21,11 +23,3 @@ Dissertação (mestrado) – Instituto Militar de Engenharia, Sistemas e Computa
 2. Blockchain.
 3. Notarização.
 4. Defesa Cibernética.
-
-### Descrição
-
-* Repositório de código-fonte da dissertação apresentada ao Programa de Pós-graduação em Sistemas e Computação do Instituto Militar de Engenharia, como requisito parcial para a obtenção do título de Mestre em Ciências em Sistemas e Computação.
-
-### Defesa
-
-* Dissertação de mestrado defendida em 27 de agosto de 2020, no Instituto Militar de Engenharia, Rio de Janeiro - RJ, Brasil.
