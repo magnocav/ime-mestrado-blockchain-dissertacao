@@ -242,13 +242,12 @@ Ler as orientações disponíveis em sites na Internet:
 
     * A saída prevista para o comando acima é:
 
-        _pub   rsa4096 2017-02-22 [SCEA]_
-
-        _        9DC8 5822 9FC7 DD38 854A  E2D8 8D81 803C 0EBF CD88_
-
-        _uid           [ unknown] Docker Release (CE deb) < docker@docker.com>_
-        
-        _sub   rsa4096 2017-02-22 [S]_
+    ```html
+    pub   rsa4096 2017-02-22 [SCEA]
+            9DC8 5822 9FC7 DD38 854A  E2D8 8D81 803C 0EBF CD88
+    uid           [ unknown] Docker Release (CE deb) < docker@docker.com>
+    sub   rsa4096 2017-02-22 [S]
+    ```
 
 5. Configurar repositório estável:
 
@@ -311,7 +310,9 @@ Ler a documentação disponível na Internet:
 * Recursos preliminares:
 
     $> sudo apt install build-essential libssl-dev
+    $>
     $> sudo apt install openssl pkg-config
+    $>
     $> sudo apt install gcc g++ make
 
 ### Instalar um Gerenciador de Versão do Node.js
@@ -389,13 +390,16 @@ Primeiro verifique qual é o identificador da versão mais recente, para poder a
 
 1. Preparar módulos do `Node.js for Fabric' em um repositório local:
 
+    ```bash
     $> cd ~
     $> mkdir ~/hyperledger
     $> cd ~/hyperledger
     $> npm init
+    ```
 
     * _About to write to /home/fabric/hyperledger/package.json:_
 
+    ```javascript
     {
         "name":"hyperledger",
         "version":"1.0.0",
@@ -412,6 +416,7 @@ Primeiro verifique qual é o identificador da versão mais recente, para poder a
         "license":"ISC"
         }
     }
+    ```
 
 2. Instalar GULP:
 
