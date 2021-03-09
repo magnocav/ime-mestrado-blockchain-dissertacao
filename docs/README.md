@@ -17,38 +17,54 @@ Sistema computacional disponível para uso dedicado com a seguinte configuraçã
 
 1. Conectar-se ao sistema através de uma console SSH:
 
+    ```bash
     $> ssh (username)@(ip-address)
+    ```
 
 2. Criar usuário FABRIC:
 
+    ```bash
     $> sudo adduser fabric
+    ```
 
 3. Adicionar FABRIC ao grupo SUDO:
 
+    ```bash
     $> sudo usermod -aG sudo fabric
+    ```
 
 4. Executar os comandos como `fabric':
 
+    ```bash
     $> su fabric
+    ```
 
 5. Verificar versão (16.x) do Ubuntu:
 
+    ```bash
     $> lsb_release -a
+    ```
 
 6. Verificar espaço em disco:
 [Disk Ref. A](https://www.cyberciti.biz/faq/linux-check-disk-space-command/);
 [Disk Ref. B](https://www.howtogeek.com/409611/how-to-view-free-disk-space-and-disk-usage-from-the-linux-terminal/).
 
+    ```bash
     $> df -h
+    ```
 
 7. Instalar auxiliar de visualização de espaço em disco:
 [Disk Ref. C](https://lintut.com/ncdu-check-disk-usage/).
 
+    ```bash
     $> sudo apt install ncdu
+    ```
 
 8. Instalar auxiliar para verificação de pacotes:
 
+    ```bash
     $> sudo apt install aptitude
+    ```
 
 ### Atualizar Sistema Operacional Ubuntu 16.x para versão 18.x
 
@@ -58,127 +74,169 @@ Esta fase de atualização do sistema pode demorar mais de 4 horas para realizar
 
 1. Atualizar pacotes do sistema:
 
+    ```bash
     $> sudo apt update
     $> sudo apt upgrade
+    ```
 
 2. Preparar o upgrade do Ubuntu subindo a release do 16.x:
 
+    ```bash
     $> sudo apt dist-upgrade
     $> sudo apt autoremove
+    ```
 
 3. Reiniciar o sistema inteiro para completar a instalação:
 
+    ```bash
     $> sudo reboot
+    ```
 
 4. Fazer o upgrade para a versão 18.x:
 
+    ```bash
     $> sudo do-release-upgrade
+    ```
 
 5. Remover pacotes obsoletos manualmente:
 [Ubuntu Ref. C](https://www.cyberciti.biz/faq/ubuntu-18-04-remove-all-unused-old-kernels/);
 [Ubuntu Ref. D](https://unix.stackexchange.com/questions/413942/how-to-handle-obsolete-packages-when-upgrading-distribution).
 
+    ```bash
     $> sudo apt --purge autoremove
     $> sudo apt update
     $> sudo apt autoremove
+    ```
 
 6. Atualizar os pacotes do sistema:
 
+    ```bash
     $> sudo apt upgrade
     $> sudo apt update
+    ```
 
 7. Verificar versão e release do Ubuntu:
 
+    ```bash
     $> lsb_release -a
+    ```
 
 8. Instalar pacotes e pré-requisitos comuns de desenvolvimento de software:
 
+    ```bash
     $> sudo apt install software-properties-common
     $> sudo apt install build-essential make unzip g++ libtool
+    ```
 
 9. Reiniciar o sistema inteiro para confirmar instalações:
 
+    ```bash
     $> sudo reboot
+    ```
 
 ### Instalar *bash auto completion*
 
 1. [Como Instalar](https://www.cyberciti.biz/faq/add-bash-auto-completion-in-ubuntu-linux/):
 
+    ```bash
     $> sudo apt update
     $> sudo apt install bash-completion
     $> cat /etc/profile.d/bash_completion.sh
+    ```
 
 2. Adicionar "/etc/profile.d/bash_completion.sh" em seu "~/.bashrc":
 
+    ```bash
     $> echo "## bash auto completion configuration" >> ~/.bashrc
     $> echo "source /etc/profile.d/bash_completion.sh" >> ~/.bashrc
     $> echo "## " >>  ~/.bashrc
     $> source  ~/.bashrc
+    ```
 
 ### Instalar *cURL*
 
 * [Como Instalar](https://www.luminanetworks.com/docs-lsc-610/Topics/SDN_Controller_Software_Installation_Guide/Appendix/Installing_cURL_for_Ubuntu_1.html):
 
+    ```bash
     $> sudo apt update
     $> sudo apt install curl
     $> curl --version
+    ```
 
 ### Instalar *figlet* Para Uso Geral em Testes
 
 * Instalar:
 
+    ```bash
     $> sudo apt install figlet
     $> figlet hello hyperledger
+    ```
 
 ### Instalar Git Client
 
 * [Como Instalar](https://www.digitalocean.com/community/tutorials/how-to-install-git-on-ubuntu-18-04-quickstart):
 
+    ```bash
     $> sudo apt update
     $> sudo apt install git git-doc git-el git-email
     $> git --version
+    ```
 
 ### Verificar e/ou Instalar Python 3.x
 
 1. Verificar:
 
+    ```bash
     $> python --version
+    ```
 
 2. Se o Python não existir, instale usando o comando:
 
+    ```bash
     $> sudo apt install python
+    ```
 
 3. Se já existe uma versão 2.7.x ou superior do Python, pode-se instalar a versão 3.7:
 
+    ```bash
     $> sudo apt install python3.7
     $> python3 -v
+    ```
 
 ### Instalar ou Atualizar PIP (Relativo ao Python)
 
 1. [Como Instalar](https://pip.pypa.io/en/stable/installing/):
 
+    ```bash
     $> sudo apt install python-pip
+    ```
 
 2. Atualizar:
 
+    ```bash
     $> pip install -U pip
+    ```
 
 ### Instalar Java OpenJDK
 
 * Instalar:
 
+    ```bash
     $> sudo apt update
     $> sudo apt install default-jre
     $> sudo apt install default-jdk
     $> java -version
     $> javac -version
+    ```
 
 ### Instalar Maven
 
 * [Como Instalar](https://linuxize.com/post/how-to-install-apache-maven-on-ubuntu-18-04/):
 
+    ```bash
     $> sudo apt install maven
     $> mvn -version
+    ```
 
 ### Instalar Go Lang 1.12.x SDK Programming
 
@@ -188,12 +246,15 @@ Ler as orientações disponíveis em sites na Internet:
 
 1. Baixar e descompactar arquivos:
 
+    ```bash
     $> cd  ~
     $> wget https://golang.org/dl/go1.12.10.linux-amd64.tar.gz
     $> tar -xvf go1.12.10.linux-amd64.tar.gz
+    ```
 
 2. Instalar pré-requisitos e preparar diretórios:
 
+    ```bash
     $> sudo apt install -y libtool libltdl-dev
     $> mv go go1.12.10  
     $> sudo mv go1.12.10 /usr/local/
@@ -201,9 +262,11 @@ Ler as orientações disponíveis em sites na Internet:
     $> sudo chown -R fabric /usr/local/go
     $> sudo chgrp -R fabric /usr/local/go
     $> sudo chmod -R 755 /usr/local/go
+    ```
 
 3. Ajustar variáveis de ambiente:
 
+    ```bash
     $> cd  ~
     $> mkdir  ~/go-work
     $> echo "# GO Language env begin" >>  ~/.profile
@@ -213,6 +276,7 @@ Ler as orientações disponíveis em sites na Internet:
     $> echo "# GO Language env end" >>  ~/.profile
     $> source  ~/.profile
     $> go version
+    ```
 
 ## Instalar Virtualização de Sistemas
 
@@ -225,24 +289,32 @@ Ler as orientações disponíveis em sites na Internet:
 
 1. Desinstalar alguma versão antiga:
 
+    ```bash
     $> sudo apt remove docker docker-engine docker.io containerd runc
+    ```
 
 2. Preparar repositório e verificar pré-requisitos:
 
+    ```bash
     $> sudo apt install -y apt-transport-https ca-certificates
     $> sudo apt install -y gnupg-agent software-properties-common
+    ```
 
 3. Adicionar a chave GPG oficial:
 
+    ```bash
     $> curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+    ```
 
 4. Verificar a chave GPG:
 
+    ```bash
     $> sudo apt-key fingerprint 0EBFCD88
+    ```
 
     * A saída prevista para o comando acima é:
 
-    ```html
+    ```bash
     pub   rsa4096 2017-02-22 [SCEA]
             9DC8 5822 9FC7 DD38 854A  E2D8 8D81 803C 0EBF CD88
     uid           [ unknown] Docker Release (CE deb) < docker@docker.com>
@@ -251,23 +323,33 @@ Ler as orientações disponíveis em sites na Internet:
 
 5. Configurar repositório estável:
 
+    ```bash
     $> sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+    ```
 
 6. Atualizar o índice de pacotes
 
+    ```bash
     $> sudo apt update
+    ```
 
 7. Instalar a última versão estável do __Docker__:
 
+    ```bash
     $> sudo apt install docker-ce docker-ce-cli containerd.io
+    ```
 
 8. Verificar onde o Docker foi instalado:
 
+    ```bash
     $> dpkg -L docker-ce
+    ```
 
 9. Verificar versões instaladas:
 
+    ```bash
     $> docker -v
+    ```
 
 ### Instalar Docker Compose
 
@@ -277,31 +359,40 @@ Ler a documentação disponível na Internet:
 
 1. Instalar a versão 1.24.1 do Docker-Compose
 
+    ```bash
     $> sudo curl -L "https://github.com/docker/compose/releases/download/1.24.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-    $>
     $> sudo apt install docker-compose
+    ```
 
 2. Configurar diretórios e usuários do Docker-Compose
 
+    ```bash
     $> sudo chmod +x /usr/local/bin/docker-compose
     $> sudp apt upgrade
+    ```
 
 3. Verificar versões instaladas:
 
+    ```bash
     $> docker-compose -v
+    ```
 
 ### Docker Como Serviço
 
 1. Executar Hello-World:
 
+    ```bash
     $> docker run hello-world
     $> docker run busybox echo hello world
     $> docker ps -a
     $> docker images
+    ```
 
 2. Habilitar o Docker como um serviço no sistema:
 
+    ```bash
     $> sudo systemctl enable docker
+    ```
 
 ## Instalar Runtime de JavaScript
 
@@ -309,11 +400,11 @@ Ler a documentação disponível na Internet:
 
 * Recursos preliminares:
 
+    ```bash
     $> sudo apt install build-essential libssl-dev
-    $>
     $> sudo apt install openssl pkg-config
-    $>
     $> sudo apt install gcc g++ make
+    ```
 
 ### Instalar um Gerenciador de Versão do Node.js
 
@@ -328,27 +419,37 @@ Primeiro verifique qual é o identificador da versão mais recente, para poder a
 
 2. Baixar script de instalação NVM. Altere a URL para a versão mais recente:
 
+    ```bash
     $> cd  ~
     $> curl -sL "https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh" -o install_nvm.sh
+    ```
 
 3. Auditar o arquivo bash .SH antes de executar a instalação, porque você deve garantir que neste arquivo a codificação é confiável para executar como SUDO no ambiente. Você pode usar o editor NANO:
 
+    ```bash
     $> nano install_nvm.sh
+    ```
 
 4. Executar o script bash.
     * O script instalará o software em um subdiretório do seu diretório home em  "~/.nvm", e também adicionará as linhas necessárias no seu arquivo  ~/.profile para usar o as variáveis de ambiente no sistema:
 
+    ```bash
     $> bash install_nvm.sh
+    ```
 
 5. Efetuar logoff e em seguida login, para o sistema carregar as variáveis de ambiente a partir de *$HOME/.bashrc* automaticamente.
 
 6. Recarregar suas variáveis de ambiente:
 
+    ```bash
     $> source  ~/.profile
+    ```
 
 7. Verificar a versão instalada do NVM:
 
+    ```bash
     $> nvm --version
+    ```
 
 ### Instalar Node.js versão 8.x
 
@@ -360,31 +461,45 @@ Primeiro verifique qual é o identificador da versão mais recente, para poder a
 1. Instalar as versões de Node.js isoladamente usando o NVM.
     * Para maiores informações sobre as versões do Node.js disponíveis, execute o comando e analise o conteúdo do arquivo .txt buscando pela melhor versão para seu propósito:
 
+    ```bash
     $> nvm ls-remote > node-versions-actualdate.txt
+    ```
 
 2. Instalar Node.js 8.x:
 
+    ```bash
     $> nvm install 8.17.0
+    ```
 
 3. Instruir o NVM para usar a versão instalada:
 
+    ```bash
     $> nvm use 8.17.0
+    ```
 
 4. Verificar a versão do Node.js instalada:
 
+    ```bash
     $> nvm ls
+    ```
 
 5. Tornar a versão instalada como a versão *default*:
 
+    ```bash
     $> nvm alias default 8.17.0
+    ```
 
 6. Verificar Node.js:
 
+    ```bash
     $> node -v
+    ```
 
 7. Verificar NPM:
 
+    ```bash
     $> npm -v
+    ```
 
 ### Configurar Node.js
 
@@ -420,49 +535,71 @@ Primeiro verifique qual é o identificador da versão mais recente, para poder a
 
 2. Instalar GULP:
 
+    ```bash
     $> npm install -y gulp
+    ```
 
 3. Instalar Pacotes Utilitários:
 
+    ```bash
     $> npm install -y util http https tape
+    ```
 
 4. Instalar Log4JS (logging):
 
+    ```bash
     $> npm install -y log4js
+    ```
 
 5. Instalar Mocha JavaScript test framework:
 
+    ```bash
     $> npm install -y mocha
+    ```
 
 6. Instalar Gyp:
 
+    ```bash
     $> npm install -y gyp
+    ```
 
 7. Instalar Node-Pre-Gyp:
 
+    ```bash
     $> npm install -y node-pre-gyp
+    ```
 
 8. Instalar GRPC (tem que ser no repositório local):
 
+    ```bash
     $> npm install -y grpc
+    ```
 
 ### Componentes para Criptografia no Node.js
 
 1. Instalar biblioteca JavaScript:[Elliptic](https://www.npmjs.com/package/elliptic):
 
+    ```bash
     $> npm install elliptic
+    ```
 
 2. Instalar biblioteca JavaScript:[OpenPGP](https://openpgpjs.org/openpgpjs/doc):
 
+    ```bash
     $> npm install openpgp
+    ```
 
 3. Instalar biblioteca JavaScript:[Forge](https://github.com/digitalbazaar/forge):
 
+    ```bash
     $> npm install node-forge
+    ```
 
 4. Instalar biblioteca JavaScript:[File-Type](https://www.npmjs.com/package/file-type):
 
+    ```bash
     $> npm install file-type
+    ```
 
 ### Verificar Componentes Nativos de Criptografia do Node.js
 
@@ -470,12 +607,14 @@ Biblioteca [Crypto.js](https://nodejs.org/docs/latest-v10.x/api/crypto.html)
 
 * Comandos em sequência para execução no prompt:
 
+    ```bash
     $> node
             >
             > const crypto = require('crypto');
             > const ciphers = crypto.getCiphers();
             > console.log(ciphers);
             > .exit
+    ```
 
 ## Instalar Utilitários
 
@@ -487,27 +626,37 @@ Biblioteca [Crypto.js](https://nodejs.org/docs/latest-v10.x/api/crypto.html)
 
 * Comandos a serem executados:
 
+    ```bash
     $> cd  ~
     $> sudo apt install -y jq
     $> jq --version
+    ```
 
 ## Concluir a Configuração dos Pré-Requisitos
 
 1. Atualizar referências dos pacotes:
 
+    ```bash
     $> sudo apt update
+    ```
 
 2. Fazer upgrade dos pacotes:
 
+    ```bash
     $> sudo apt upgrade
+    ```
 
 3. Limpar os pacotes desnecessários:
 
+    ```bash
     $> sudo apt --purge autoremove
+    ```
 
 4. Reiniciar sistema:
 
+    ```bash
     $> sudo reboot
+    ```
 
 ## Configurar Hyperledger para Ambiente de Desenvolvimento
 
@@ -521,43 +670,59 @@ Biblioteca [Crypto.js](https://nodejs.org/docs/latest-v10.x/api/crypto.html)
 
 1. Mover para o diretório para o repositório:
 
+    ```bash
     $> cd  ~/hyperledger
+    ```
 
 2. Verificar e REMOVER as imagens Docker já existentes:
 
+    ```bash
     $> docker images
     $> docker system prune -a
+    ```
 
 3. Recuperar o release de produção mais recente (1.4.5):
 
+    ```bash
     $> curl -sSL http://bit.ly/2ysbOFE | bash -s -- 1.4.9 1.4.9 0.4.22
+    ```
 
 4. Reiniciar sistema:
 
+    ```bash
     Installing hyperledger/fabric-samples repo
     (. . .)
     = = => List out hyperledger docker images
+    ```
 
 5. Verificar as imagens Docker baixadas:
 
+    ```bash
     $> docker images
+    ```
 
 6. Checkout do Java OpenSDK a partir do [repositório no GitHub](https://github.com/hyperledger/fabric-sdk-java):
 
+    ```bash
     $> cd  ~/hyperledger
     $> git clone https://github.com/hyperledger/fabric-sdk-java.git
     $> ls fabric-sdk-java
+    ```
 
 7. Checkout do Node.js SDK a partir do [repositório no GitHub](https://github.com/hyperledger/fabric-sdk-node). Informações adicionais estão em [SDK Node 1.4](https://fabric-sdk-node.github.io/release-1.4/index.html)
 
+    ```bash
     $> cd  ~/hyperledger
     $> git clone https://github.com/hyperledger/fabric-sdk-node.git
     $> ls fabric-sdk-node
+    ```
 
 8. Verificar os diretórios principais baixados:
 
+    ```bash
     $> ls fabric*
     $> ls fabric-samples/bin
+    ```
 
 ### Configurar Variáveis de Ambiente
 
@@ -565,110 +730,152 @@ Dica: Edite o arquivo com o comando *nano .profile* para corrigir/ajustar o cont
 
 * Comandos a serem executados:
 
+    ```bash
     $> cd  ~
     $> echo "# HYPERLEDGER FABRIC env begin" >>  ~/.profile
     $> echo "export FABRICSAMPLES=$HOME/hyperledger/fabric-samples" >>  ~/.profile
     $> echo "export PATH=$FABRICSAMPLES/bin:$PATH" >>  ~/.profile
     $> echo "# HYPERLEDGER FABRIC env end" >>  ~/.profile
     $> source  ~/.profile
+    ```
 
 ### Instalar Fabric-CA (server + client)
 
 * Comandos a serem executados:
 
+    ```bash
     $> cd  ~
     $> go get -u github.com/hyperledger/fabric-ca/cmd/
+    ```
 
-    *Aguarde algum tempo. Quando acabar de executar, vai devolver o prompt*
+    _Aguarde algum tempo. Quando acabar de executar, vai devolver o prompt_
 
-    *Verificar versões instaladas*
+    _Verificar versões instaladas_
 
+    ```bash
     $> fabric-ca-server version
     $> fabric-ca-client version
+    ```
 
 ### Testar Exemplo:_First Network_
 
 1. Testar Criação de um Bloco Gênesis com a _First Network_:
 
+    ```bash
     $> cd  ~/hyperledger/fabric-samples/first-network
     $> ./byfn.sh generate
     $> ./byfn.sh up
+    ```
 
 2. Verificar os containers em execução:
 
+    ```bash
     $> docker ps -a
+    ```
 
 3. Derrubar a _First Network_:
 
+    ```bash
     $> ./byfn.sh down
+    ```
 
 ### Testar Exemplo:_Basic Network_
 
 1. Preparar (Leia as instruções do README.md do Hyperledger Fabric):
 
+    ```bash
     $> cd  ~/hyperledger/fabric-samples/basic-network
     $> cat README.md
+    ```
 
 2. Iniciar a rede:
 
+    ```bash
     $> ./start.sh
+    ```
 
 3. Verificar os containers:
 
+    ```bash
     $> docker ps -a
+    ```
 
 4. Encerrar a rede:
 
+    ```bash
     $> ./stop.sh
+    ```
 
 5. Verificar os containers:
 
+    ```bash
     $> docker ps -a
+    ```
 
 6. Verificar a versão do executável Orderer:
 
+    ```bash
     $> orderer version
+    ```
 
 7. Verificar a versão do executável Peer:
 
+    ```bash
     $> peer version
+    ```
 
 8. Verificar a lista de imagens Docker que foram baixadas:
 
+    ```bash
     $> docker images
+    ```
 
 9. Verificar a versão da ferramenta CRYPTOGEN:
 
+    ```bash
     $> cryptogen version
     $> cryptogen showtemplate
+    ```
 
 10. Verificar a versão da ferramenta CONFIGTXGEN:
 
+    ```bash
     $> configtxgen -version
+    ```
 
 11. Verificar a versão da ferramenta CONFIGTXLATOR:
 
+    ```bash
     $> configtxlator version
+    ```
 
 12. Verificar a versão do Fabric CA Server:
 
+    ```bash
     $> fabric-ca-server version
+    ```
 
 13. Verificar a versão do Fabric CA Client:
 
+    ```bash
     $> fabric-ca-client version
+    ```
 
-### Hyperldeger Fabric API's
+### Hyperld    PI's
 
 1. Instalar Hyperldeger Fabric API's, na home-area do usuário de operação do Hyperledger Fabric:
 
+    ```bash
     $> npm install fabric-common
     $> npm install fabric-network
     $> npm install fabric-shim
     $> npm install fabric-contract-api
+    ```
 
 2. Reiniciar o sistema inteiro para salvar dados e confirmar a instalação:
 
+    ```bash
     $> sudo reboot
+    ```
 
 ## Fim
