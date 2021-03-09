@@ -242,10 +242,13 @@ Ler as orientações disponíveis em sites na Internet:
 
     * A saída prevista para o comando acima é:
 
-        *pub   rsa4096 2017-02-22 [SCEA]*
-        *.        9DC8 5822 9FC7 DD38 854A  E2D8 8D81 803C 0EBF CD88*
-        *uid           [ unknown] Docker Release (CE deb) < docker@docker.com>*
-        *sub   rsa4096 2017-02-22 [S]*
+        _pub   rsa4096 2017-02-22 [SCEA]_
+
+        _        9DC8 5822 9FC7 DD38 854A  E2D8 8D81 803C 0EBF CD88_
+
+        _uid           [ unknown] Docker Release (CE deb) < docker@docker.com>_
+        
+        _sub   rsa4096 2017-02-22 [S]_
 
 5. Configurar repositório estável:
 
