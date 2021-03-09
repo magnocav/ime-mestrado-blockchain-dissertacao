@@ -75,8 +75,8 @@ Esta fase de atualização do sistema pode demorar mais de 4 horas para realizar
     $> sudo do-release-upgrade
 
 5. Remover pacotes obsoletos manualmente:
-[Ubuntu Ref. C](https://www.cyberciti.biz/faq/ubuntu-18-04-remove-all-unused-old-kernels/)
-[Ubuntu Ref. D](https://unix.stackexchange.com/questions/413942/how-to-handle-obsolete-packages-when-upgrading-distribution)
+[Ubuntu Ref. C](https://www.cyberciti.biz/faq/ubuntu-18-04-remove-all-unused-old-kernels/);
+[Ubuntu Ref. D](https://unix.stackexchange.com/questions/413942/how-to-handle-obsolete-packages-when-upgrading-distribution).
 
     $> sudo apt --purge autoremove
     $> sudo apt update
@@ -117,7 +117,7 @@ Esta fase de atualização do sistema pode demorar mais de 4 horas para realizar
 
 ### Instalar *cURL*
 
-* [Instalar](https://www.luminanetworks.com/docs-lsc-610/Topics/SDN_Controller_Software_Installation_Guide/Appendix/Installing_cURL_for_Ubuntu_1.html):
+* [Como Instalar](https://www.luminanetworks.com/docs-lsc-610/Topics/SDN_Controller_Software_Installation_Guide/Appendix/Installing_cURL_for_Ubuntu_1.html):
 
     $> sudo apt update
     $> sudo apt install curl
@@ -155,7 +155,7 @@ Esta fase de atualização do sistema pode demorar mais de 4 horas para realizar
 
 ### Instalar ou Atualizar PIP (Relativo ao Python)
 
-1. [Instalar](https://pip.pypa.io/en/stable/installing/):
+1. [Como Instalar](https://pip.pypa.io/en/stable/installing/):
 
     $> sudo apt install python-pip
 
@@ -189,7 +189,7 @@ Ler as orientações disponíveis em sites na Internet:
 1. Baixar e descompactar arquivos:
 
     $> cd  ~
-    $> wget "https://golang.org/dl/go1.12.10.linux-amd64.tar.gz"
+    $> wget https://golang.org/dl/go1.12.10.linux-amd64.tar.gz
     $> tar -xvf go1.12.10.linux-amd64.tar.gz
 
 2. Instalar pré-requisitos e preparar diretórios:
@@ -217,9 +217,9 @@ Ler as orientações disponíveis em sites na Internet:
 ## Instalar Virtualização de Sistemas
 
 Ler as orientações disponíveis em sites na Internet:
-[Ref. A](https://docs.docker.com/install/linux/docker-ce/ubuntu/)
-[Ref. B](https://docs.docker.com/install/linux/linux-postinstall/)
-[Ref. C](https://www.uniwebb.com/blog/post/how-to-install-hyperledger-fabric-14-on-ubuntu-1804-lts/1766/)
+[Docker Ref. A](https://docs.docker.com/install/linux/docker-ce/ubuntu/);
+[Docker Ref. B](https://docs.docker.com/install/linux/linux-postinstall/);
+[Docker Ref. C](https://www.uniwebb.com/blog/post/how-to-install-hyperledger-fabric-14-on-ubuntu-1804-lts/1766/).
 
 ### Instalar Docker
 
@@ -234,7 +234,7 @@ Ler as orientações disponíveis em sites na Internet:
 
 3. Adicionar a chave GPG oficial:
 
-    $> curl -fsSL "https://download.docker.com/linux/ubuntu/gpg" | sudo apt-key add -
+    $> curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 
 4. Verificar a chave GPG:
 
@@ -269,13 +269,14 @@ Ler as orientações disponíveis em sites na Internet:
 
 ### Instalar Docker Compose
 
-Ler a documentação disponível na Internet
-[Docker Install](https://docs.docker.com/compose/install/)
-[HLF Pre-reqs](https://hyperledger-fabric.readthedocs.io/en/release-1.4/prereqs.html)
+Ler a documentação disponível na Internet:
+[Docker Install](https://docs.docker.com/compose/install/);
+[HLF Pre-reqs](https://hyperledger-fabric.readthedocs.io/en/release-1.4/prereqs.html).
 
 1. Instalar a versão 1.24.1 do Docker-Compose
 
     $> sudo curl -L "https://github.com/docker/compose/releases/download/1.24.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+    $>
     $> sudo apt install docker-compose
 
 2. Configurar diretórios e usuários do Docker-Compose
@@ -312,8 +313,8 @@ Ler a documentação disponível na Internet
 
 ### Instalar um Gerenciador de Versão do Node.js
 
-Antes de qualquer ação, verifique e trate possível versão anterior do NVM que pode já existir antes no sistema.
-Utilize os recursos disponíveis na Internet:
+* Antes de qualquer ação, verifique e trate possível versão anterior do NVM que pode já existir antes no sistema.
+* Utilize os recursos disponíveis na Internet:
     [NVM Ref. A](https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-18-04-pt);
     [NVM Ref. B](https://www.liquidweb.com/kb/how-to-install-node-version-manager-on-ubuntu/);
     [NVM Ref. C](https://stackoverflow.com/questions/11542846/nvm-node-js-recommended-install-for-all-users).
@@ -347,7 +348,7 @@ Primeiro verifique qual é o identificador da versão mais recente, para poder a
 
 ### Instalar Node.js versão 8.x
 
-Consultar as referências sobre a instalação do Node.js que estão disponíveis na Internet:
+* Consultar as referências sobre a instalação do Node.js que estão disponíveis na Internet:
     [Node Ref. A](https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-18-04-pt)
     [Node Ref. B](https://tecadmin.net/install-latest-nodejs-npm-on-ubuntu/)
     [Node Ref. C](https://linuxize.com/post/how-to-install-node-js-on-ubuntu-18.04/)
@@ -472,9 +473,9 @@ Biblioteca [Crypto.js](https://nodejs.org/docs/latest-v10.x/api/crypto.html)
 
 ### Instalar JQuery
 
-Informações sobre o JQuery podem ser encontradas em sites na Internet:
-[JQuery](https://jquery.com/)
-[JQuery by IBM dev](https://developer.ibm.com/recipes/tutorials/developing-backend-application-with-hyperledger-fabric-through-sdk/)
+* Informações sobre o JQuery podem ser encontradas em sites na Internet:
+[JQuery](https://jquery.com/);
+[JQuery by IBM dev](https://developer.ibm.com/recipes/tutorials/developing-backend-application-with-hyperledger-fabric-through-sdk/).
 
 * Comandos a serem executados:
 
@@ -502,7 +503,7 @@ Informações sobre o JQuery podem ser encontradas em sites na Internet:
 
 ## Configurar Hyperledger para Ambiente de Desenvolvimento
 
-Busque na Internet e revise as instruções de instalação do Hyperledger Fabric 1.4.x:
+* Busque na Internet e revise as instruções de instalação do Hyperledger Fabric 1.4.x:
 [HLF Install](https://hyperledger-fabric.readthedocs.io/en/latest/install.html);
 [HLF devenv](https://hyperledger-fabric.readthedocs.io/en/release-1.4/dev-setup/devenv.html);
 [HLF at Ubuntu](https://www.uniwebb.com/blog/post/how-to-install-hyperledger-fabric-14-on-ubuntu-1804-lts/1766/);
@@ -521,7 +522,7 @@ Busque na Internet e revise as instruções de instalação do Hyperledger Fabri
 
 3. Recuperar o release de produção mais recente (1.4.5):
 
-    $> curl -sSL "http://bit.ly/2ysbOFE" | bash -s -- 1.4.9 1.4.9 0.4.22
+    $> curl -sSL http://bit.ly/2ysbOFE | bash -s -- 1.4.9 1.4.9 0.4.22
 
 4. Reiniciar sistema:
 
@@ -536,13 +537,13 @@ Busque na Internet e revise as instruções de instalação do Hyperledger Fabri
 6. Checkout do Java OpenSDK a partir do [repositório no GitHub](https://github.com/hyperledger/fabric-sdk-java):
 
     $> cd  ~/hyperledger
-    $> git clone "https://github.com/hyperledger/fabric-sdk-java.git"
+    $> git clone https://github.com/hyperledger/fabric-sdk-java.git
     $> ls fabric-sdk-java
 
 7. Checkout do Node.js SDK a partir do [repositório no GitHub](https://github.com/hyperledger/fabric-sdk-node). Informações adicionais estão em [SDK Node 1.4](https://fabric-sdk-node.github.io/release-1.4/index.html)
 
     $> cd  ~/hyperledger
-    $> git clone "https://github.com/hyperledger/fabric-sdk-node.git"
+    $> git clone https://github.com/hyperledger/fabric-sdk-node.git
     $> ls fabric-sdk-node
 
 8. Verificar os diretórios principais baixados:
