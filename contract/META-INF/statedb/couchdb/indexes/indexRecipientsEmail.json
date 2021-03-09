@@ -1,0 +1,10 @@
+{
+    "index": {
+        "fields": [
+            "recipients.userId.email"
+        ]
+    },
+    "ddoc": "docRecipientsEmail",
+    "name": "indexRecipientsEmail",
+    "type": "json"
+}

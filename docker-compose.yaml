@@ -1,0 +1,611 @@
+# ----------
+# Author: Magno Alves Cavalcante < magno@cavalcante.eng.br >
+#
+# SPDX-License-Identifier: Apache-2.0
+# ----------
+#
+
+# Multiple Organization
+version: '3.5'
+
+networks:
+  blockdevnet:
+    name: atlas_blockdevnet
+
+services:
+  orderer.blockchain.biz:
+    container_name: orderer.blockchain.biz
+    image: hyperledger/fabric-orderer:1.4.9
+    volumes:
+      # VM docker stream folder mapping
+      - /var/run/:/host/var/run/
+      # Default root path
+      - ./orderer/workdir/:/etc/hyperledger/fabric/orderer
+      # Mapping for ORDERER_GENERAL_LOCALMSPDIR
+      - ./crypto-config/ordererOrganizations/blockchain.biz/orderers/orderer.blockchain.biz:/etc/hyperledger/fabric/crypto/orderer
+      # Folder with channel create tx file
+      - ./configtx:/etc/hyperledger/fabric/configtx
+      # Map the folder to root of all Fabric CA Client crypto
+      - ./crypto-config:/etc/hyperledger/fabric/crypto-config/
+      # For chaincode and application
+      - ./network/channel:/etc/hyperledger/fabric/network/channel
+      - ./crypto-config/peerOrganizations/guarani.blockchain.biz/peers/peer0.guarani.blockchain.biz:/etc/hyperledger/fabric/crypto/guarani
+      - ./crypto-config/peerOrganizations/ticcuna.blockchain.biz/peers/peer0.ticcuna.blockchain.biz:/etc/hyperledger/fabric/crypto/ticcuna
+      - ./crypto-config/peerOrganizations/xavante.blockchain.biz/peers/peer0.xavante.blockchain.biz:/etc/hyperledger/fabric/crypto/xavante
+    environment:
+      - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
+      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=atlas_blockdevnet
+      - CORE_VM_DOCKER_ATTACHSTDOUT=true
+      - FABRIC_LOGGING_SPEC=info
+      - FABRIC_CFG_PATH=/etc/hyperledger/fabric/orderer
+      - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
+      - ORDERER_GENERAL_LISTENPORT=7050
+      - ORDERER_GENERAL_GENESISMETHOD=file
+      - ORDERER_GENERAL_GENESISFILE=/etc/hyperledger/fabric/configtx/sysgenesis.block
+      - ORDERER_GENERAL_LOCALMSPID=OrdererMSP
+      - ORDERER_GENERAL_LOCALMSPDIR=/etc/hyperledger/fabric/crypto/orderer/msp
+      - ORDERER_GENERAL_TLS_ENABLED=true
+      - ORDERER_GENERAL_TLS_PRIVATEKEY=/etc/hyperledger/fabric/crypto/orderer/tls/server.key
+      - ORDERER_GENERAL_TLS_CERTIFICATE=/etc/hyperledger/fabric/crypto/orderer/tls/server.crt
+      - ORDERER_GENERAL_TLS_ROOTCAS=[/etc/hyperledger/fabric/crypto/orderer/tls/ca.crt,/etc/hyperledger/fabric/crypto/guarani/tls/ca.crt,/etc/hyperledger/fabric/crypto/ticcuna/tls/ca.crt,/etc/hyperledger/fabric/crypto/xavante/tls/ca.crt]
+      - ORDERER_GENERAL_TLS_CLIENTAUTHREQUIRED=false
+      - ORDERER_GENERAL_TLS_CLIENTROOTCAS=/etc/hyperledger/fabric/crypto-config/ordererOrganizations/blockchain.biz/users/Admin@blockchain.biz/tls/ca.crt
+      - ORDERER_FILELEDGER_LOCATION=/etc/hyperledger/fabric/orderer/ledger
+      - ORDERER_FILELEDGER_PREFIX=hlf-ordererledger
+      # Logging
+      - ORDERER_GENERAL_LOGLEVEL=info
+      # Additional vars to support configs at runtime
+      - ORDERER_TLS_ROOTCERT_FILE=/etc/hyperledger/fabric/crypto-config/ordererOrganizations/blockchain.biz/orderers/orderer.blockchain.biz/tls/ca.crt
+      - ORDERER_CACERT=/etc/hyperledger/fabric/crypto-config/ordererOrganizations/blockchain.biz/orderers/orderer.blockchain.biz/msp/ca.blockchain.biz-cert.pem
+      - ORDERER_TLSCACERT=/etc/hyperledger/fabric/crypto-config/ordererOrganizations/blockchain.biz/orderers/orderer.blockchain.biz/msp/tlscacerts/tlsca.blockchain.biz-cert.pem
+      - ADMIN_ORDERER_CACERT=/etc/hyperledger/fabric/crypto-config/ordererOrganizations/blockchain.biz/users/Admin@blockchain.biz/msp/cacerts/ca.blockchain.biz-cert.pem
+      - ADMIN_ORDERER_TLSCACERT=/etc/hyperledger/fabric/crypto-config/ordererOrganizations/blockchain.biz/users/Admin@blockchain.biz/msp/tlscacerts/tlsca.blockchain.biz-cert.pem
+    ports:
+      - 7050:7050
+      - 7070:7070
+    networks:
+      - blockdevnet
+    working_dir: /etc/hyperledger/fabric/orderer
+    command: orderer
+
+  ###---------------------------------------------------------------------------------------
+  couchdb.guarani.peer0:
+    container_name: couchdb.guarani.peer0
+    image: hyperledger/fabric-couchdb:0.4.22
+    environment:
+      - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
+      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=atlas_blockdevnet
+      - CORE_VM_DOCKER_ATTACHSTDOUT=true
+      - CORE_PEER_NETWORKID=blockdevnet
+      - COUCHDB_USER=admindb
+      - COUCHDB_PASSWORD=adminpwd
+    ports:
+      - 10984:5984
+    networks:
+      - blockdevnet
+
+  peer0.guarani.blockchain.biz:
+    container_name: peer0.guarani.blockchain.biz
+    image: hyperledger/fabric-peer:1.4.9
+    volumes:
+      # VM docker stream folder mapping
+      - /var/run/:/host/var/run/
+      # Default root path
+      - ./guarani/workdir:/etc/hyperledger/fabric/guarani/peer
+      # Mapping for CORE_PEER_MSPCONFIGPATH
+      - ./crypto-config/peerOrganizations/guarani.blockchain.biz/peers/peer0.guarani.blockchain.biz:/etc/hyperledger/fabric/crypto/guarani
+      - ./crypto-config/peerOrganizations/guarani.blockchain.biz:/etc/hyperledger/fabric/peerOrganization/crypto
+      # Folder with channel create tx file
+      - ./configtx:/etc/hyperledger/fabric/configtx
+      # Map the folder to root of all Fabric CA Client crypto
+      - ./crypto-config:/etc/hyperledger/fabric/crypto-config/ 
+      # For chaincode and application
+      - ./network/channel:/etc/hyperledger/fabric/network/channel
+      - ./application:/etc/hyperledger/src/application
+      - ./contract:/etc/hyperledger/src/chaincode
+      - ./wallet:/etc/hyperledger/src/wallet
+    environment:
+      - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
+      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=atlas_blockdevnet 
+      - CORE_VM_DOCKER_ATTACHSTDOUT=true
+      - FABRIC_CFG_PATH=/etc/hyperledger/fabric/guarani/peer
+      - FABRIC_LOGGING_SPEC=info
+      - CORE_PEER_NETWORKID=blockdevnet
+      - CORE_PEER_ADDRESSAUTODETECT=false
+      - CORE_PEER_ID=peer0.guarani.blockchain.biz
+      - CORE_PEER_LOCALMSPID=GuaraniMSP
+      - CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/fabric/crypto/guarani/msp
+      - CORE_PEER_ADDRESS=peer0.guarani.blockchain.biz:10051
+      - CORE_PEER_LISTENADDRESS=0.0.0.0:10051
+      - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:10052
+      - CORE_PEER_EVENTS_ADDRESS=0.0.0.0:10053
+      - CORE_PEER_FILESYSTEMPATH=/etc/hyperledger/fabric/guarani/peer
+      - CORE_PEER_PROFILE_ENABLED=true
+      - CORE_PEER_COMMITTER_ENABLED=true
+      - CORE_PEER_TLS_ENABLED=true
+      - CORE_PEER_TLS_CERT_FILE=/etc/hyperledger/fabric/crypto/guarani/tls/server.crt
+      - CORE_PEER_TLS_KEY_FILE=/etc/hyperledger/fabric/crypto/guarani/tls/server.key
+      - CORE_PEER_TLS_ROOTCERT_FILE=/etc/hyperledger/fabric/crypto/guarani/tls/ca.crt
+      - CORE_PEER_TLS_CLIENTAUTHREQUIRED=false 
+      - CORE_PEER_TLS_CLIENTCERT_FILE=/etc/hyperledger/fabric/peerOrganization/crypto/users/User1@guarani.blockchain.biz/tls/client.crt
+      - CORE_PEER_TLS_CLIENTKEY_FILE=/etc/hyperledger/fabric/peerOrganization/crypto/users/User1@guarani.blockchain.biz/tls/client.key
+      - CORE_PEER_TLS_CLIENTROOTCAS_FILES=[/etc/hyperledger/fabric/crypto-config/peerOrganizations/guarani.blockchain.biz/users/Admin@guarani.blockchain.biz/tls/ca.crt,/etc/hyperledger/fabric/crypto-config/peerOrganizations/guarani.blockchain.biz/users/User1@guarani.blockchain.biz/tls/ca.crt,/etc/hyperledger/fabric/crypto-config/peerOrganizations/guarani.blockchain.biz/users/User2@guarani.blockchain.biz/tls/ca.crt]
+      - CORE_PEER_CHAINCODE_MODE=dev
+      # - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.guarani.blockchain.biz:10051
+      - CORE_PEER_GOSSIP_ENDPOINT=peer0.guarani.blockchain.biz:10051
+      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.guarani.blockchain.biz:10051
+      - CORE_PEER_GOSSIP_USELEADERELECTION=true
+      - CORE_PEER_GOSSIP_ORGLEADER=false
+      - CORE_PEER_GOSSIP_SKIPHANDSHAKE=true
+      - CORE_LOGGING_PEER=info
+      - CORE_LOGGING_LEDGER=info
+      - CORE_LOGGING_CAUTHDSL=info
+      - CORE_LOGGING_GOSSIP=info
+      - CORE_LOGGING_MSP=info
+      - CORE_LOGGING_POLICIES=info
+      - CORE_LOGGING_GRPC=info
+      - CORE_CHAINCODE_LOGGING_LEVEL=debug
+      - CORE_CHAINCODE_LOGGING_SHIM=debug
+      - GRPC_GO_LOG_VERBOSITY_LEVEL=99
+      - GRPC_GO_LOG_SEVERITY_LEVEL=info
+      - CORE_LEDGER_HISTORY_ENABLEHISTORYDATABASE=true
+      - CORE_LEDGER_STATE_STATEDATABASE=CouchDB
+      - CORE_LEDGER_STATE_COUCHDBCONFIG_COUCHDBADDRESS=couchdb.guarani.peer0:5984
+      - CORE_LEDGER_STATE_COUCHDBCONFIG_USERNAME=admindb
+      - CORE_LEDGER_STATE_COUCHDBCONFIG_PASSWORD=adminpwd
+      # Additional vars to support configs at runtime
+      - CORE_PEER_MSPCONFIGPATH_ADMIN=/etc/hyperledger/fabric/peerOrganization/crypto/users/Admin@guarani.blockchain.biz/msp
+      - ORDERER_TLS_ROOTCERT_FILE=/etc/hyperledger/fabric/crypto-config/ordererOrganizations/blockchain.biz/orderers/orderer.blockchain.biz/tls/ca.crt
+      - ORDERER_CACERT=/etc/hyperledger/fabric/crypto-config/ordererOrganizations/blockchain.biz/orderers/orderer.blockchain.biz/msp/cacerts/ca.blockchain.biz-cert.pem
+      - ORDERER_TLSCACERT=/etc/hyperledger/fabric/crypto-config/ordererOrganizations/blockchain.biz/orderers/orderer.blockchain.biz/msp/tlscacerts/tlsca.blockchain.biz-cert.pem
+      - PEER_CACERT=/etc/hyperledger/fabric/crypto/guarani/msp/cacerts/ca.guarani.blockchain.biz-cert.pem
+      - PEER_TLSCACERT=/etc/hyperledger/fabric/crypto/guarani/msp/tlscacerts/tlsca.guarani.blockchain.biz-cert.pem
+      - ADMIN_PEER_CACERT=/etc/hyperledger/fabric/peerOrganization/crypto/users/Admin@guarani.blockchain.biz/msp/cacerts/ca.guarani.blockchain.biz-cert.pem
+      - ADMIN_PEER_TLSCACERT=/etc/hyperledger/fabric/peerOrganization/crypto/users/Admin@guarani.blockchain.biz/msp/tlscacerts/tlsca.guarani.blockchain.biz-cert.pem
+      - ADMIN_PEER_SIGNCERTS=/etc/hyperledger/fabric/peerOrganization/crypto/users/Admin@guarani.blockchain.biz/msp/signcerts/Admin@guarani.blockchain.biz-cert.pem
+      - CHAINCODE_PEER_WALLET_FOLDER=/etc/hyperledger/src/wallet
+    ports:
+      - 10051:10051
+      - 10052:10052
+      - 10053:10053
+      - 10054:10054
+    networks:
+      - blockdevnet
+    depends_on:
+      - couchdb.guarani.peer0
+    working_dir: /etc/hyperledger/fabric/guarani/peer
+    command: peer node start
+
+  cliGuarani:
+    container_name: cliGuarani
+    image: hyperledger/fabric-tools:1.4.9
+    tty: true
+    stdin_open: true
+    volumes:
+      # VM docker stream folder mapping
+      - /var/run/:/host/var/run/
+      # Default root path
+      - ./guarani/workdir:/etc/hyperledger/fabric/guarani/peer
+      # Mapping for CORE_PEER_MSPCONFIGPATH
+      - ./crypto-config/peerOrganizations/guarani.blockchain.biz/peers/peer0.guarani.blockchain.biz:/etc/hyperledger/fabric/crypto/guarani
+      - ./crypto-config/peerOrganizations/guarani.blockchain.biz:/etc/hyperledger/fabric/peerOrganization/crypto
+      # Folder with channel create tx file
+      - ./configtx:/etc/hyperledger/fabric/configtx
+      # Map the folder to root of all Fabric CA Client crypto
+      - ./crypto-config:/etc/hyperledger/fabric/crypto-config/ 
+      # For chaincode and application
+      - ./network/channel:/etc/hyperledger/fabric/network/channel
+      - ./application:/etc/hyperledger/src/application
+      - ./contract:/etc/hyperledger/src/chaincode
+      - ./wallet:/etc/hyperledger/src/wallet
+    environment:
+      - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
+      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=atlas_blockdevnet 
+      - FABRIC_CFG_PATH=/etc/hyperledger/fabric/guarani/peer
+      - FABRIC_LOGGING_SPEC=info
+      - CORE_PEER_NETWORKID=blockdevnet
+      - CORE_PEER_ID=cliGuarani
+      - CORE_PEER_LOCALMSPID=GuaraniMSP
+      - CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/fabric/peerOrganization/crypto/users/Admin@guarani.blockchain.biz/msp
+      - CORE_PEER_ADDRESS=peer0.guarani.blockchain.biz:10051 #port 10051 changed from 7051 to Guarani org use
+      - CORE_PEER_FILESYSTEMPATH=/etc/hyperledger/fabric/guarani/peer
+      - CORE_PEER_PROFILE_ENABLED=true
+      - CORE_PEER_TLS_ENABLED=true
+      - CORE_PEER_TLS_CERT_FILE=/etc/hyperledger/fabric/crypto/guarani/tls/server.crt
+      - CORE_PEER_TLS_KEY_FILE=/etc/hyperledger/fabric/crypto/guarani/tls/server.key
+      - CORE_PEER_TLS_ROOTCERT_FILE=/etc/hyperledger/fabric/crypto/guarani/tls/ca.crt
+      - CORE_PEER_TLS_CLIENTAUTHREQUIRED=false 
+      - CORE_PEER_TLS_CLIENTCERT_FILE=/etc/hyperledger/fabric/peerOrganization/crypto/users/User1@guarani.blockchain.biz/tls/client.crt
+      - CORE_PEER_TLS_CLIENTKEY_FILE=/etc/hyperledger/fabric/peerOrganization/crypto/users/User1@guarani.blockchain.biz/tls/client.key
+      - CORE_PEER_TLS_CLIENTROOTCAS_FILES=[/etc/hyperledger/fabric/crypto-config/peerOrganizations/guarani.blockchain.biz/users/Admin@guarani.blockchain.biz/tls/ca.crt,/etc/hyperledger/fabric/crypto-config/peerOrganizations/guarani.blockchain.biz/users/User1@guarani.blockchain.biz/tls/ca.crt,/etc/hyperledger/fabric/crypto-config/peerOrganizations/guarani.blockchain.biz/users/User2@guarani.blockchain.biz/tls/ca.crt]
+      - CORE_PEER_GOSSIP_USELEADERELECTION=true
+      - CORE_PEER_GOSSIP_ORGLEADER=false
+      - CORE_LOGGING_PEER=info
+      - CORE_LOGGING_LEDGER=info
+      - CORE_LOGGING_CAUTHDSL=info
+      - CORE_LOGGING_GOSSIP=info
+      - CORE_LOGGING_MSP=info
+      - CORE_LOGGING_POLICIES=info
+      - CORE_LOGGING_GRPC=info
+      - CORE_CHAINCODE_LOGGING_LEVEL=debug
+      - CORE_CHAINCODE_LOGGING_SHIM=debug
+      - GRPC_GO_LOG_VERBOSITY_LEVEL=99
+      - GRPC_GO_LOG_SEVERITY_LEVEL=info
+      # Additional vars to support configs at runtime
+      - ORDERER_TLS_ROOTCERT_FILE=/etc/hyperledger/fabric/crypto-config/ordererOrganizations/blockchain.biz/orderers/orderer.blockchain.biz/tls/ca.crt
+      - ORDERER_CACERT=/etc/hyperledger/fabric/crypto-config/ordererOrganizations/blockchain.biz/orderers/orderer.blockchain.biz/msp/cacerts/ca.blockchain.biz-cert.pem
+      - ORDERER_TLSCACERT=/etc/hyperledger/fabric/crypto-config/ordererOrganizations/blockchain.biz/orderers/orderer.blockchain.biz/msp/tlscacerts/tlsca.blockchain.biz-cert.pem
+      - PEER_CACERT=/etc/hyperledger/fabric/crypto/guarani/msp/cacerts/ca.guarani.blockchain.biz-cert.pem
+      - PEER_TLSCACERT=/etc/hyperledger/fabric/crypto/guarani/msp/tlscacerts/tlsca.guarani.blockchain.biz-cert.pem
+      - ADMIN_PEER_CACERT=/etc/hyperledger/fabric/peerOrganization/crypto/users/Admin@guarani.blockchain.biz/msp/cacerts/ca.guarani.blockchain.biz-cert.pem
+      - ADMIN_PEER_TLSCACERT=/etc/hyperledger/fabric/peerOrganization/crypto/users/Admin@guarani.blockchain.biz/msp/tlscacerts/tlsca.guarani.blockchain.biz-cert.pem
+      - ADMIN_PEER_SIGNCERTS=/etc/hyperledger/fabric/peerOrganization/crypto/users/Admin@guarani.blockchain.biz/msp/signcerts/Admin@guarani.blockchain.biz-cert.pem
+      - CHAINCODE_PEER_WALLET_FOLDER=/etc/hyperledger/src/wallet
+    networks:
+      - blockdevnet
+    depends_on:
+      - peer0.guarani.blockchain.biz
+    working_dir: /etc/hyperledger/fabric/guarani/peer
+    command: /bin/bash
+
+  ###---------------------------------------------------------------------------------------
+  couchdb.ticcuna.peer0:
+    container_name: couchdb.ticcuna.peer0
+    image: hyperledger/fabric-couchdb:0.4.22
+    environment:
+      - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
+      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=atlas_blockdevnet
+      - CORE_VM_DOCKER_ATTACHSTDOUT=true
+      - CORE_PEER_NETWORKID=blockdevnet
+      - COUCHDB_USER=admindb
+      - COUCHDB_PASSWORD=adminpwd
+    ports:
+      - 12984:5984
+    networks:
+      - blockdevnet
+  
+  peer0.ticcuna.blockchain.biz:
+    container_name: peer0.ticcuna.blockchain.biz
+    image: hyperledger/fabric-peer:1.4.9
+    volumes:
+      # VM docker stream folder mapping
+      - /var/run/:/host/var/run/
+      # Default root path
+      - ./ticcuna/workdir:/etc/hyperledger/fabric/ticcuna/peer
+      # Mapping for CORE_PEER_MSPCONFIGPATH
+      - ./crypto-config/peerOrganizations/ticcuna.blockchain.biz/peers/peer0.ticcuna.blockchain.biz:/etc/hyperledger/fabric/crypto/ticcuna
+      - ./crypto-config/peerOrganizations/ticcuna.blockchain.biz:/etc/hyperledger/fabric/peerOrganization/crypto
+      # Folder with channel create tx file
+      - ./configtx:/etc/hyperledger/fabric/configtx
+      # Map the folder to root of all Fabric CA Client crypto
+      - ./crypto-config:/etc/hyperledger/fabric/crypto-config/ 
+      # For chaincode and application
+      - ./network/channel:/etc/hyperledger/fabric/network/channel
+      - ./application:/etc/hyperledger/src/application
+      - ./contract:/etc/hyperledger/src/chaincode
+      - ./wallet:/etc/hyperledger/src/wallet
+    environment:
+      - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
+      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=atlas_blockdevnet 
+      - CORE_VM_DOCKER_ATTACHSTDOUT=true
+      - FABRIC_CFG_PATH=/etc/hyperledger/fabric/ticcuna/peer
+      - FABRIC_LOGGING_SPEC=info
+      - CORE_PEER_NETWORKID=blockdevnet
+      - CORE_PEER_ADDRESSAUTODETECT=false
+      - CORE_PEER_ID=peer0.ticcuna.blockchain.biz
+      - CORE_PEER_LOCALMSPID=TiccunaMSP
+      - CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/fabric/crypto/ticcuna/msp
+      - CORE_PEER_ADDRESS=peer0.ticcuna.blockchain.biz:12051
+      - CORE_PEER_LISTENADDRESS=0.0.0.0:12051
+      - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:12052
+      - CORE_PEER_EVENTS_ADDRESS=0.0.0.0:12053
+      - CORE_PEER_FILESYSTEMPATH=/etc/hyperledger/fabric/ticcuna/peer
+      - CORE_PEER_PROFILE_ENABLED=true
+      - CORE_PEER_COMMITTER_ENABLED=true
+      - CORE_PEER_TLS_ENABLED=true
+      - CORE_PEER_TLS_CERT_FILE=/etc/hyperledger/fabric/crypto/ticcuna/tls/server.crt
+      - CORE_PEER_TLS_KEY_FILE=/etc/hyperledger/fabric/crypto/ticcuna/tls/server.key
+      - CORE_PEER_TLS_ROOTCERT_FILE=/etc/hyperledger/fabric/crypto/ticcuna/tls/ca.crt
+      - CORE_PEER_TLS_CLIENTAUTHREQUIRED=false 
+      - CORE_PEER_TLS_CLIENTCERT_FILE=/etc/hyperledger/fabric/peerOrganization/crypto/users/User1@ticcuna.blockchain.biz/tls/client.crt
+      - CORE_PEER_TLS_CLIENTKEY_FILE=/etc/hyperledger/fabric/peerOrganization/crypto/users/User1@ticcuna.blockchain.biz/tls/client.key
+      - CORE_PEER_TLS_CLIENTROOTCAS_FILES=[/etc/hyperledger/fabric/crypto-config/peerOrganizations/ticcuna.blockchain.biz/users/Admin@ticcuna.blockchain.biz/tls/ca.crt,/etc/hyperledger/fabric/crypto-config/peerOrganizations/ticcuna.blockchain.biz/users/User1@ticcuna.blockchain.biz/tls/ca.crt,/etc/hyperledger/fabric/crypto-config/peerOrganizations/ticcuna.blockchain.biz/users/User2@ticcuna.blockchain.biz/tls/ca.crt]
+      - CORE_PEER_CHAINCODE_MODE=dev
+      # - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.ticcuna.blockchain.biz:12051
+      - CORE_PEER_GOSSIP_ENDPOINT=peer0.ticcuna.blockchain.biz:12051
+      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.ticcuna.blockchain.biz:12051
+      - CORE_PEER_GOSSIP_USELEADERELECTION=true
+      - CORE_PEER_GOSSIP_ORGLEADER=false
+      - CORE_PEER_GOSSIP_SKIPHANDSHAKE=true
+      - CORE_LOGGING_PEER=info
+      - CORE_LOGGING_LEDGER=info
+      - CORE_LOGGING_CAUTHDSL=info
+      - CORE_LOGGING_GOSSIP=info
+      - CORE_LOGGING_MSP=info
+      - CORE_LOGGING_POLICIES=info
+      - CORE_LOGGING_GRPC=info
+      - CORE_CHAINCODE_LOGGING_LEVEL=debug
+      - CORE_CHAINCODE_LOGGING_SHIM=debug
+      - GRPC_GO_LOG_VERBOSITY_LEVEL=99
+      - GRPC_GO_LOG_SEVERITY_LEVEL=info
+      - CORE_LEDGER_HISTORY_ENABLEHISTORYDATABASE=true
+      - CORE_LEDGER_STATE_STATEDATABASE=CouchDB
+      - CORE_LEDGER_STATE_COUCHDBCONFIG_COUCHDBADDRESS=couchdb.ticcuna.peer0:5984
+      - CORE_LEDGER_STATE_COUCHDBCONFIG_USERNAME=admindb
+      - CORE_LEDGER_STATE_COUCHDBCONFIG_PASSWORD=adminpwd
+      # Additional vars to support configs at runtime
+      - CORE_PEER_MSPCONFIGPATH_ADMIN=/etc/hyperledger/fabric/peerOrganization/crypto/users/Admin@ticcuna.blockchain.biz/msp
+      - ORDERER_TLS_ROOTCERT_FILE=/etc/hyperledger/fabric/crypto-config/ordererOrganizations/blockchain.biz/orderers/orderer.blockchain.biz/tls/ca.crt
+      - ORDERER_CACERT=/etc/hyperledger/fabric/crypto-config/ordererOrganizations/blockchain.biz/orderers/orderer.blockchain.biz/msp/cacerts/ca.blockchain.biz-cert.pem
+      - ORDERER_TLSCACERT=/etc/hyperledger/fabric/crypto-config/ordererOrganizations/blockchain.biz/orderers/orderer.blockchain.biz/msp/tlscacerts/tlsca.blockchain.biz-cert.pem
+      - PEER_CACERT=/etc/hyperledger/fabric/crypto/ticcuna/msp/cacerts/ca.ticcuna.blockchain.biz-cert.pem
+      - PEER_TLSCACERT=/etc/hyperledger/fabric/crypto/ticcuna/msp/tlscacerts/tlsca.ticcuna.blockchain.biz-cert.pem
+      - ADMIN_PEER_CACERT=/etc/hyperledger/fabric/peerOrganization/crypto/users/Admin@ticcuna.blockchain.biz/msp/cacerts/ca.ticcuna.blockchain.biz-cert.pem
+      - ADMIN_PEER_TLSCACERT=/etc/hyperledger/fabric/peerOrganization/crypto/users/Admin@ticcuna.blockchain.biz/msp/tlscacerts/tlsca.ticcuna.blockchain.biz-cert.pem
+      - ADMIN_PEER_SIGNCERTS=/etc/hyperledger/fabric/peerOrganization/crypto/users/Admin@ticcuna.blockchain.biz/msp/signcerts/Admin@ticcuna.blockchain.biz-cert.pem
+      - CHAINCODE_PEER_WALLET_FOLDER=/etc/hyperledger/src/wallet
+    ports:
+      - 12051:12051
+      - 12052:12052
+      - 12053:12053
+      - 12054:12054
+    networks:
+      - blockdevnet
+    depends_on:
+      - couchdb.ticcuna.peer0
+    working_dir: /etc/hyperledger/fabric/ticcuna/peer
+    command: peer node start
+
+  cliTiccuna:
+    container_name: cliTiccuna
+    image: hyperledger/fabric-tools:1.4.9
+    tty: true
+    stdin_open: true
+    volumes:
+      # VM docker stream folder mapping
+      - /var/run/:/host/var/run/
+      # Default root path
+      - ./ticcuna/workdir:/etc/hyperledger/fabric/ticcuna/peer
+      # Mapping for CORE_PEER_MSPCONFIGPATH
+      - ./crypto-config/peerOrganizations/ticcuna.blockchain.biz/peers/peer0.ticcuna.blockchain.biz:/etc/hyperledger/fabric/crypto/ticcuna
+      - ./crypto-config/peerOrganizations/ticcuna.blockchain.biz:/etc/hyperledger/fabric/peerOrganization/crypto
+      # Folder with channel create tx file
+      - ./configtx:/etc/hyperledger/fabric/configtx
+      # Map the folder to root of all Fabric CA Client crypto
+      - ./crypto-config:/etc/hyperledger/fabric/crypto-config/ 
+      # For chaincode and application
+      - ./network/channel:/etc/hyperledger/fabric/network/channel
+      - ./application:/etc/hyperledger/src/application
+      - ./contract:/etc/hyperledger/src/chaincode
+      - ./wallet:/etc/hyperledger/src/wallet
+    environment:
+      - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
+      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=atlas_blockdevnet 
+      - FABRIC_CFG_PATH=/etc/hyperledger/fabric/ticcuna/peer
+      - FABRIC_LOGGING_SPEC=info
+      - CORE_PEER_NETWORKID=blockdevnet
+      - CORE_PEER_ID=cliTiccuna
+      - CORE_PEER_LOCALMSPID=TiccunaMSP
+      - CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/fabric/peerOrganization/crypto/users/Admin@ticcuna.blockchain.biz/msp
+      - CORE_PEER_ADDRESS=peer0.ticcuna.blockchain.biz:12051 #port 12051 changed from 7051 to Ticcuna org use
+      - CORE_PEER_FILESYSTEMPATH=/etc/hyperledger/fabric/ticcuna/peer
+      - CORE_PEER_PROFILE_ENABLED=true
+      - CORE_PEER_TLS_ENABLED=true
+      - CORE_PEER_TLS_CERT_FILE=/etc/hyperledger/fabric/crypto/ticcuna/tls/server.crt
+      - CORE_PEER_TLS_KEY_FILE=/etc/hyperledger/fabric/crypto/ticcuna/tls/server.key
+      - CORE_PEER_TLS_ROOTCERT_FILE=/etc/hyperledger/fabric/crypto/ticcuna/tls/ca.crt
+      - CORE_PEER_TLS_CLIENTAUTHREQUIRED=false 
+      - CORE_PEER_TLS_CLIENTCERT_FILE=/etc/hyperledger/fabric/peerOrganization/crypto/users/User1@ticcuna.blockchain.biz/tls/client.crt
+      - CORE_PEER_TLS_CLIENTKEY_FILE=/etc/hyperledger/fabric/peerOrganization/crypto/users/User1@ticcuna.blockchain.biz/tls/client.key
+      - CORE_PEER_TLS_CLIENTROOTCAS_FILES=[/etc/hyperledger/fabric/crypto-config/peerOrganizations/ticcuna.blockchain.biz/users/Admin@ticcuna.blockchain.biz/tls/ca.crt,/etc/hyperledger/fabric/crypto-config/peerOrganizations/ticcuna.blockchain.biz/users/User1@ticcuna.blockchain.biz/tls/ca.crt,/etc/hyperledger/fabric/crypto-config/peerOrganizations/ticcuna.blockchain.biz/users/User2@ticcuna.blockchain.biz/tls/ca.crt]
+      - CORE_PEER_GOSSIP_USELEADERELECTION=true
+      - CORE_PEER_GOSSIP_ORGLEADER=false
+      - CORE_LOGGING_PEER=info
+      - CORE_LOGGING_LEDGER=info
+      - CORE_LOGGING_CAUTHDSL=info
+      - CORE_LOGGING_GOSSIP=info
+      - CORE_LOGGING_MSP=info
+      - CORE_LOGGING_POLICIES=info
+      - CORE_LOGGING_GRPC=info
+      - CORE_CHAINCODE_LOGGING_LEVEL=debug
+      - CORE_CHAINCODE_LOGGING_SHIM=debug
+      - GRPC_GO_LOG_VERBOSITY_LEVEL=99
+      - GRPC_GO_LOG_SEVERITY_LEVEL=info
+      # Additional vars to support configs at runtime
+      - ORDERER_TLS_ROOTCERT_FILE=/etc/hyperledger/fabric/crypto-config/ordererOrganizations/blockchain.biz/orderers/orderer.blockchain.biz/tls/ca.crt
+      - ORDERER_CACERT=/etc/hyperledger/fabric/crypto-config/ordererOrganizations/blockchain.biz/orderers/orderer.blockchain.biz/msp/cacerts/ca.blockchain.biz-cert.pem
+      - ORDERER_TLSCACERT=/etc/hyperledger/fabric/crypto-config/ordererOrganizations/blockchain.biz/orderers/orderer.blockchain.biz/msp/tlscacerts/tlsca.blockchain.biz-cert.pem
+      - PEER_CACERT=/etc/hyperledger/fabric/crypto/ticcuna/msp/cacerts/ca.ticcuna.blockchain.biz-cert.pem
+      - PEER_TLSCACERT=/etc/hyperledger/fabric/crypto/ticcuna/msp/tlscacerts/tlsca.ticcuna.blockchain.biz-cert.pem
+      - ADMIN_PEER_CACERT=/etc/hyperledger/fabric/peerOrganization/crypto/users/Admin@ticcuna.blockchain.biz/msp/cacerts/ca.ticcuna.blockchain.biz-cert.pem
+      - ADMIN_PEER_TLSCACERT=/etc/hyperledger/fabric/peerOrganization/crypto/users/Admin@ticcuna.blockchain.biz/msp/tlscacerts/tlsca.ticcuna.blockchain.biz-cert.pem
+      - ADMIN_PEER_SIGNCERTS=/etc/hyperledger/fabric/peerOrganization/crypto/users/Admin@ticcuna.blockchain.biz/msp/signcerts/Admin@ticcuna.blockchain.biz-cert.pem
+      - CHAINCODE_PEER_WALLET_FOLDER=/etc/hyperledger/src/wallet
+    networks:
+      - blockdevnet
+    depends_on:
+      - peer0.ticcuna.blockchain.biz
+    working_dir: /etc/hyperledger/fabric/ticcuna/peer
+    command: /bin/bash
+
+  ###---------------------------------------------------------------------------------------
+  couchdb.xavante.peer0:
+    container_name: couchdb.xavante.peer0
+    image: hyperledger/fabric-couchdb:0.4.22
+    environment:
+      - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
+      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=atlas_blockdevnet
+      - CORE_VM_DOCKER_ATTACHSTDOUT=true
+      - CORE_PEER_NETWORKID=blockdevnet
+      - COUCHDB_USER=admindb
+      - COUCHDB_PASSWORD=adminpwd
+    ports:
+      - 14984:5984
+    networks:
+      - blockdevnet
+  
+  peer0.xavante.blockchain.biz:
+    container_name: peer0.xavante.blockchain.biz
+    image: hyperledger/fabric-peer:1.4.9
+    volumes:
+      # VM docker stream folder mapping
+      - /var/run/:/host/var/run/
+      # Default root path
+      - ./xavante/workdir:/etc/hyperledger/fabric/xavante/peer
+      # Mapping for CORE_PEER_MSPCONFIGPATH
+      - ./crypto-config/peerOrganizations/xavante.blockchain.biz/peers/peer0.xavante.blockchain.biz:/etc/hyperledger/fabric/crypto/xavante
+      - ./crypto-config/peerOrganizations/xavante.blockchain.biz:/etc/hyperledger/fabric/peerOrganization/crypto
+      # Folder with channel create tx file
+      - ./configtx:/etc/hyperledger/fabric/configtx
+      # Map the folder to root of all Fabric CA Client crypto
+      - ./crypto-config:/etc/hyperledger/fabric/crypto-config/ 
+      # For chaincode and application
+      - ./network/channel:/etc/hyperledger/fabric/network/channel
+      - ./application:/etc/hyperledger/src/application
+      - ./contract:/etc/hyperledger/src/chaincode
+      - ./wallet:/etc/hyperledger/src/wallet
+    environment:
+      - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
+      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=atlas_blockdevnet 
+      - CORE_VM_DOCKER_ATTACHSTDOUT=true
+      - FABRIC_CFG_PATH=/etc/hyperledger/fabric/xavante/peer
+      - FABRIC_LOGGING_SPEC=info
+      - CORE_PEER_NETWORKID=blockdevnet
+      - CORE_PEER_ADDRESSAUTODETECT=false
+      - CORE_PEER_ID=peer0.xavante.blockchain.biz
+      - CORE_PEER_LOCALMSPID=XavanteMSP
+      - CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/fabric/crypto/xavante/msp
+      - CORE_PEER_ADDRESS=peer0.xavante.blockchain.biz:14051
+      - CORE_PEER_LISTENADDRESS=0.0.0.0:14051
+      - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:14052
+      - CORE_PEER_EVENTS_ADDRESS=0.0.0.0:14053
+      - CORE_PEER_FILESYSTEMPATH=/etc/hyperledger/fabric/xavante/peer
+      - CORE_PEER_PROFILE_ENABLED=true
+      - CORE_PEER_COMMITTER_ENABLED=true
+      - CORE_PEER_TLS_ENABLED=true
+      - CORE_PEER_TLS_CERT_FILE=/etc/hyperledger/fabric/crypto/xavante/tls/server.crt
+      - CORE_PEER_TLS_KEY_FILE=/etc/hyperledger/fabric/crypto/xavante/tls/server.key
+      - CORE_PEER_TLS_ROOTCERT_FILE=/etc/hyperledger/fabric/crypto/xavante/tls/ca.crt
+      - CORE_PEER_TLS_CLIENTAUTHREQUIRED=false 
+      - CORE_PEER_TLS_CLIENTCERT_FILE=/etc/hyperledger/fabric/peerOrganization/crypto/users/User1@xavante.blockchain.biz/tls/client.crt
+      - CORE_PEER_TLS_CLIENTKEY_FILE=/etc/hyperledger/fabric/peerOrganization/crypto/users/User1@xavante.blockchain.biz/tls/client.key
+      - CORE_PEER_TLS_CLIENTROOTCAS_FILES=[/etc/hyperledger/fabric/crypto-config/peerOrganizations/xavante.blockchain.biz/users/Admin@xavante.blockchain.biz/tls/ca.crt,/etc/hyperledger/fabric/crypto-config/peerOrganizations/xavante.blockchain.biz/users/User1@xavante.blockchain.biz/tls/ca.crt,/etc/hyperledger/fabric/crypto-config/peerOrganizations/xavante.blockchain.biz/users/User2@xavante.blockchain.biz/tls/ca.crt]
+      - CORE_PEER_CHAINCODE_MODE=dev
+      # - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.xavante.blockchain.biz:14051
+      - CORE_PEER_GOSSIP_ENDPOINT=peer0.xavante.blockchain.biz:14051
+      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.xavante.blockchain.biz:14051
+      - CORE_PEER_GOSSIP_USELEADERELECTION=true
+      - CORE_PEER_GOSSIP_ORGLEADER=false
+      - CORE_PEER_GOSSIP_SKIPHANDSHAKE=true
+      - CORE_LOGGING_PEER=info
+      - CORE_LOGGING_LEDGER=info
+      - CORE_LOGGING_CAUTHDSL=info
+      - CORE_LOGGING_GOSSIP=info
+      - CORE_LOGGING_MSP=info
+      - CORE_LOGGING_POLICIES=info
+      - CORE_LOGGING_GRPC=info
+      - CORE_CHAINCODE_LOGGING_LEVEL=debug
+      - CORE_CHAINCODE_LOGGING_SHIM=debug
+      - GRPC_GO_LOG_VERBOSITY_LEVEL=99
+      - GRPC_GO_LOG_SEVERITY_LEVEL=info
+      - CORE_LEDGER_HISTORY_ENABLEHISTORYDATABASE=true
+      - CORE_LEDGER_STATE_STATEDATABASE=CouchDB
+      - CORE_LEDGER_STATE_COUCHDBCONFIG_COUCHDBADDRESS=couchdb.xavante.peer0:5984
+      - CORE_LEDGER_STATE_COUCHDBCONFIG_USERNAME=admindb
+      - CORE_LEDGER_STATE_COUCHDBCONFIG_PASSWORD=adminpwd
+      # Additional vars to support configs at runtime
+      - CORE_PEER_MSPCONFIGPATH_ADMIN=/etc/hyperledger/fabric/peerOrganization/crypto/users/Admin@xavante.blockchain.biz/msp
+      - ORDERER_TLS_ROOTCERT_FILE=/etc/hyperledger/fabric/crypto-config/ordererOrganizations/blockchain.biz/orderers/orderer.blockchain.biz/tls/ca.crt
+      - ORDERER_CACERT=/etc/hyperledger/fabric/crypto-config/ordererOrganizations/blockchain.biz/orderers/orderer.blockchain.biz/msp/cacerts/ca.blockchain.biz-cert.pem
+      - ORDERER_TLSCACERT=/etc/hyperledger/fabric/crypto-config/ordererOrganizations/blockchain.biz/orderers/orderer.blockchain.biz/msp/tlscacerts/tlsca.blockchain.biz-cert.pem
+      - PEER_CACERT=/etc/hyperledger/fabric/crypto/xavante/msp/cacerts/ca.xavante.blockchain.biz-cert.pem
+      - PEER_TLSCACERT=/etc/hyperledger/fabric/crypto/xavante/msp/tlscacerts/tlsca.xavante.blockchain.biz-cert.pem
+      - ADMIN_PEER_CACERT=/etc/hyperledger/fabric/peerOrganization/crypto/users/Admin@xavante.blockchain.biz/msp/cacerts/ca.xavante.blockchain.biz-cert.pem
+      - ADMIN_PEER_TLSCACERT=/etc/hyperledger/fabric/peerOrganization/crypto/users/Admin@xavante.blockchain.biz/msp/tlscacerts/tlsca.xavante.blockchain.biz-cert.pem
+      - ADMIN_PEER_SIGNCERTS=/etc/hyperledger/fabric/peerOrganization/crypto/users/Admin@xavante.blockchain.biz/msp/signcerts/Admin@xavante.blockchain.biz-cert.pem
+      - CHAINCODE_PEER_WALLET_FOLDER=/etc/hyperledger/src/wallet
+    ports:
+      - 14051:14051
+      - 14052:14052
+      - 14053:14053
+      - 14054:14054
+    networks:
+      - blockdevnet
+    depends_on:
+      - couchdb.xavante.peer0
+    working_dir: /etc/hyperledger/fabric/xavante/peer
+    command: peer node start
+
+  cliXavante:
+    container_name: cliXavante
+    image: hyperledger/fabric-tools:1.4.9
+    tty: true
+    stdin_open: true
+    volumes:
+      # VM docker stream folder mapping
+      - /var/run/:/host/var/run/
+      # Default root path
+      - ./xavante/workdir:/etc/hyperledger/fabric/xavante/peer
+      # Mapping for CORE_PEER_MSPCONFIGPATH
+      - ./crypto-config/peerOrganizations/xavante.blockchain.biz/peers/peer0.xavante.blockchain.biz:/etc/hyperledger/fabric/crypto/xavante
+      - ./crypto-config/peerOrganizations/xavante.blockchain.biz:/etc/hyperledger/fabric/peerOrganization/crypto
+      # Folder with channel create tx file
+      - ./configtx:/etc/hyperledger/fabric/configtx
+      # Map the folder to root of all Fabric CA Client crypto
+      - ./crypto-config:/etc/hyperledger/fabric/crypto-config/ 
+      # For chaincode and application
+      - ./network/channel:/etc/hyperledger/fabric/network/channel
+      - ./application:/etc/hyperledger/src/application
+      - ./contract:/etc/hyperledger/src/chaincode
+      - ./wallet:/etc/hyperledger/src/wallet
+    environment:
+      - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
+      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=atlas_blockdevnet 
+      - FABRIC_CFG_PATH=/etc/hyperledger/fabric/xavante/peer
+      - FABRIC_LOGGING_SPEC=info
+      - CORE_PEER_NETWORKID=blockdevnet
+      - CORE_PEER_ID=cliXavante
+      - CORE_PEER_LOCALMSPID=XavanteMSP
+      - CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/fabric/peerOrganization/crypto/users/Admin@xavante.blockchain.biz/msp
+      - CORE_PEER_ADDRESS=peer0.xavante.blockchain.biz:14051 #port 14051 changed from 7051 to Xavante org use
+      - CORE_PEER_FILESYSTEMPATH=/etc/hyperledger/fabric/xavante/peer
+      - CORE_PEER_PROFILE_ENABLED=true
+      - CORE_PEER_TLS_ENABLED=true
+      - CORE_PEER_TLS_CERT_FILE=/etc/hyperledger/fabric/crypto/xavante/tls/server.crt
+      - CORE_PEER_TLS_KEY_FILE=/etc/hyperledger/fabric/crypto/xavante/tls/server.key
+      - CORE_PEER_TLS_ROOTCERT_FILE=/etc/hyperledger/fabric/crypto/xavante/tls/ca.crt
+      - CORE_PEER_TLS_CLIENTAUTHREQUIRED=false 
+      - CORE_PEER_TLS_CLIENTCERT_FILE=/etc/hyperledger/fabric/peerOrganization/crypto/users/User1@xavante.blockchain.biz/tls/client.crt
+      - CORE_PEER_TLS_CLIENTKEY_FILE=/etc/hyperledger/fabric/peerOrganization/crypto/users/User1@xavante.blockchain.biz/tls/client.key
+      - CORE_PEER_TLS_CLIENTROOTCAS_FILES=[/etc/hyperledger/fabric/crypto-config/peerOrganizations/xavante.blockchain.biz/users/Admin@xavante.blockchain.biz/tls/ca.crt,/etc/hyperledger/fabric/crypto-config/peerOrganizations/xavante.blockchain.biz/users/User1@xavante.blockchain.biz/tls/ca.crt,/etc/hyperledger/fabric/crypto-config/peerOrganizations/xavante.blockchain.biz/users/User2@xavante.blockchain.biz/tls/ca.crt]
+      - CORE_PEER_GOSSIP_USELEADERELECTION=true
+      - CORE_PEER_GOSSIP_ORGLEADER=false
+      - CORE_LOGGING_PEER=info
+      - CORE_LOGGING_LEDGER=info
+      - CORE_LOGGING_CAUTHDSL=info
+      - CORE_LOGGING_GOSSIP=info
+      - CORE_LOGGING_MSP=info
+      - CORE_LOGGING_POLICIES=info
+      - CORE_LOGGING_GRPC=info
+      - CORE_CHAINCODE_LOGGING_LEVEL=debug
+      - CORE_CHAINCODE_LOGGING_SHIM=debug
+      - GRPC_GO_LOG_VERBOSITY_LEVEL=99
+      - GRPC_GO_LOG_SEVERITY_LEVEL=info
+      # Additional vars to support configs at runtime
+      - ORDERER_TLS_ROOTCERT_FILE=/etc/hyperledger/fabric/crypto-config/ordererOrganizations/blockchain.biz/orderers/orderer.blockchain.biz/tls/ca.crt
+      - ORDERER_CACERT=/etc/hyperledger/fabric/crypto-config/ordererOrganizations/blockchain.biz/orderers/orderer.blockchain.biz/msp/cacerts/ca.blockchain.biz-cert.pem
+      - ORDERER_TLSCACERT=/etc/hyperledger/fabric/crypto-config/ordererOrganizations/blockchain.biz/orderers/orderer.blockchain.biz/msp/tlscacerts/tlsca.blockchain.biz-cert.pem
+      - PEER_CACERT=/etc/hyperledger/fabric/crypto/xavante/msp/cacerts/ca.xavante.blockchain.biz-cert.pem
+      - PEER_TLSCACERT=/etc/hyperledger/fabric/crypto/xavante/msp/tlscacerts/tlsca.xavante.blockchain.biz-cert.pem
+      - ADMIN_PEER_CACERT=/etc/hyperledger/fabric/peerOrganization/crypto/users/Admin@xavante.blockchain.biz/msp/cacerts/ca.xavante.blockchain.biz-cert.pem
+      - ADMIN_PEER_TLSCACERT=/etc/hyperledger/fabric/peerOrganization/crypto/users/Admin@xavante.blockchain.biz/msp/tlscacerts/tlsca.xavante.blockchain.biz-cert.pem
+      - ADMIN_PEER_SIGNCERTS=/etc/hyperledger/fabric/peerOrganization/crypto/users/Admin@xavante.blockchain.biz/msp/signcerts/Admin@xavante.blockchain.biz-cert.pem
+      - CHAINCODE_PEER_WALLET_FOLDER=/etc/hyperledger/src/wallet
+    networks:
+      - blockdevnet
+    depends_on:
+      - peer0.xavante.blockchain.biz
+    working_dir: /etc/hyperledger/fabric/xavante/peer
+    command: /bin/bash
+
+# END

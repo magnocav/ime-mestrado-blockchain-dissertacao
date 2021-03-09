@@ -1,0 +1,268 @@
+---
+#
+# The network connection profile provides client applications the information about the target
+# blockchain network that are necessary for the applications to interact with it. These are all
+# knowledge that must be acquired from out-of-band sources. This file provides such a source.
+#
+name: "biz.blockchain.devchannel.profile"
+
+#
+# Any properties with an "x-" prefix will be treated as application-specific, exactly like how naming
+# in HTTP headers or swagger properties work. The SDK will simply ignore these fields and leave
+# them for the applications to process. This is a mechanism for different components of an application
+# to exchange information that are not part of the standard schema described below. In particular,
+# the "x-type" property with the "hlfv1" value example below is used by Hyperledger Composer to
+# determine the type of Fabric networks (v0.6 vs. v1.0) it needs to work with.
+#
+x-type: "hlfv1"
+
+#
+# Describe what the target network is/does.
+#
+description: "The notarization network over devchannel"
+
+#
+# Schema version of the content. Used by the SDK to apply the corresponding parsing rules.
+#
+version: "1.0"
+
+#
+# The client section is SDK-specific. The sample below is for the node.js SDK
+#
+client:
+  # Which organization does this application instance belong to? The value must be the name of an org
+  # defined under "organizations"
+  organization: Guarani
+
+  # Some SDKs support pluggable KV stores, the properties under "credentialStore"
+  # are implementation specific
+  #credentialStore:
+    # [Optional]. Specific to FileKeyValueStore.js or similar implementations in other SDKs. Can be others
+    # if using an alternative impl. For instance, CouchDBKeyValueStore.js would require an object
+    # here for properties like url, db name, etc.
+    #path: "/tmp/hfc-kvs"
+
+    # [Optional]. Specific to the CryptoSuite implementation. Software-based implementations like
+    # CryptoSuite_ECDSA_AES.js in node SDK requires a key store. PKCS#11 based implementations does
+    # not.
+    #cryptoStore:
+      # Specific to the underlying KeyValueStore that backs the crypto key store.
+      #path: "/tmp/hfc-cvs"
+
+    # [Optional]. Specific to Composer environment
+    #wallet: wallet-name
+
+
+# [Optional]. But most apps would have this section so that channel objects can be constructed
+# based on the content below. If an app is creating channels, then it likely will not need this
+# section.
+#
+channels:
+  # Name of the channel
+  devchannel:
+    # Required. list of orderers designated by the application to use for transactions on this
+    # channel. This list can be a result of access control ("org1" can only access "ordererA"), or
+    # operational decisions to share loads from applications among the orderers.  The values must
+    # be "names" of orgs defined under "organizations/peers"
+    #
+    orderers:
+      - orderer.blockchain.biz
+
+    # Required. list of peers from participating orgs
+    #
+    peers:
+      #
+      peer0.guarani.blockchain.biz:
+        # [Optional]. will this peer be sent transaction proposals for endorsement? The peer must
+        # have the chaincode installed. The app can also use this property to decide which peers
+        # to send the chaincode install request. Default: true
+        endorsingPeer: true
+
+        # [Optional]. will this peer be sent query proposals? The peer must have the chaincode
+        # installed. The app can also use this property to decide which peers to send the
+        # chaincode install request. Default: true
+        chaincodeQuery: true
+
+        # [Optional]. will this peer be sent query proposals that do not require chaincodes, like
+        # queryBlock(), queryTransaction(), etc. Default: true
+        ledgerQuery: true
+
+        # [Optional]. will this peer be the target of the SDK's listener registration? All peers can
+        # produce events but the app typically only needs to connect to one to listen to events.
+        # Default: true
+        eventSource: true
+      
+      # peer0.ticcuna.blockchain.biz:
+      #   endorsingPeer: true
+      #   chaincodeQuery: true
+      #   ledgerQuery: true
+      #   eventSource: true
+      
+      # peer0.xavante.blockchain.biz:
+      #   endorsingPeer: true
+      #   chaincodeQuery: true
+      #   ledgerQuery: true
+      #   eventSource: true
+
+    # [Optional]. what chaincodes are expected to exist on this channel? The application can use
+    # this information to validate that the target peers are in the expected state by comparing
+    # this list with the query results of getInstalledChaincodes() and getInstantiatedChaincodes()
+    chaincodes:
+      # the format follows the "cannonical name" of chaincodes by fabric code
+      - example02:1.0.0
+      - notarizecontract:1.0.0
+
+#
+# List of participating organizations in this network
+#
+organizations:
+  #
+  Guarani:
+    mspid: GuaraniMSP
+    peers:
+      - peer0.guarani.blockchain.biz
+
+    # [Optional]. Certificate Authorities issue certificates for identification purposes in a Fabric based
+    # network. Typically certificates provisioning is done in a separate process outside of the
+    # runtime network. Fabric-CA is a special certificate authority that provides a REST APIs for
+    # dynamic certificate management (enroll, revoke, re-enroll). The following section is only for
+    # Fabric-CA servers.
+    #
+    # certificateAuthorities:
+    #  - ca.guarani.blockchain.biz
+    adminPrivateKey:
+      path: ../crypto-config/peerOrganizations/guarani.blockchain.biz/users/Admin@guarani.blockchain.biz/msp/keystore/91e3d728602d890a60bc661c670c6bf3db211d6d20926b1d2cfa421a08005d89_sk
+    signedCert:
+      path: ../crypto-config/peerOrganizations/guarani.blockchain.biz/users/Admin@guarani.blockchain.biz/msp/signcerts/Admin@guarani.blockchain.biz-cert.pem
+
+  
+  Ticcuna:
+    mspid: TiccunaMSP
+    peers:
+      - peer0.ticcuna.blockchain.biz
+    #
+    # certificateAuthorities:
+    #  - ca.ticcuna.blockchain.biz
+    adminPrivateKey:
+      path: ../crypto-config/peerOrganizations/ticcuna.blockchain.biz/users/Admin@ticcuna.blockchain.biz/msp/keystore/cd3f6eb85ddc625fdc08d2d60daca333c489c2247861b1476317d2294040e4f9_sk
+    signedCert:
+      path: ../crypto-config/peerOrganizations/ticcuna.blockchain.biz/users/Admin@ticcuna.blockchain.biz/msp/signcerts/Admin@ticcuna.blockchain.biz-cert.pem
+
+  Xavante:
+    mspid: XavanteMSP
+    peers:
+      - peer0.xavante.blockchain.biz
+    #
+    # certificateAuthorities:
+    #  - ca.xavante.blockchain.biz
+    adminPrivateKey:
+      path: ../crypto-config/peerOrganizations/xavante.blockchain.biz/users/Admin@xavante.blockchain.biz/msp/keystore/cbbb1bba6c85786ee49626445161a973790a51d1a2f73d42fed6850e742844df_sk
+    signedCert:
+      path: ../crypto-config/peerOrganizations/xavante.blockchain.biz/users/Admin@xavante.blockchain.biz/msp/signcerts/Admin@xavante.blockchain.biz-cert.pem
+
+#
+# List of orderers to send transaction and channel create/update requests to. For the time
+# being only one orderer is needed. If more than one is defined, which one get used by the
+# SDK is implementation specific. Consult each SDK's documentation for its handling of orderers.
+#
+
+# https://stackoverflow.com/questions/55219497/error-initializing-the-network-channel-from-node-sdk-in-hyperledger-fabric
+# Enable TLS on all of the Fabric nodes (peers, orderers, certificate authorities) to secure communications. Your connection profile has 
+# "grpc://" and "http://" URLs - these should be changed to "grpcs://" and "https://". It looks like the TLS CA certificates are correct.
+
+orderers:
+  #
+  orderer.blockchain.biz:
+    url: grpcs://orderer.blockchain.biz:7050
+
+    # these are standard properties defined by the gRPC library
+    # they will be passed in as-is to gRPC client constructor
+    grpcOptions:
+      ssl-target-name-override: orderer.blockchain.biz
+
+    tlsCACerts:
+      path: ../crypto-config/ordererOrganizations/blockchain.biz/orderers/orderer.blockchain.biz/msp/tlscacerts/tlsca.blockchain.biz-cert.pem
+
+#
+# List of peers to send various requests to, including endorsement, query
+# and event listener registration.
+#
+peers:
+  #
+  peer0.guarani.blockchain.biz:
+    # this URL is used to send endorsement and query requests
+    url: grpcs://peer0.guarani.blockchain.biz:10051
+
+    grpcOptions:
+      ssl-target-name-override: peer0.guarani.blockchain.biz
+      request-timeout: 120001
+
+    tlsCACerts:
+      path: ../crypto-config/peerOrganizations/guarani.blockchain.biz/msp/tlscacerts/tlsca.guarani.blockchain.biz-cert.pem
+
+  
+  peer0.ticcuna.blockchain.biz:
+    # this URL is used to send endorsement and query requests
+    url: grpcs://peer0.ticcuna.blockchain.biz:12051
+
+    grpcOptions:
+      ssl-target-name-override: peer0.ticcuna.blockchain.biz
+      request-timeout: 120001
+
+    tlsCACerts:
+      path: ../crypto-config/peerOrganizations/ticcuna.blockchain.biz/peers/peer0.ticcuna.blockchain.biz/msp/tlscacerts/tlsca.ticcuna.blockchain.biz-cert.pem
+
+  
+  peer0.xavante.blockchain.biz:
+    # this URL is used to send endorsement and query requests
+    url: grpcs://peer0.xavante.blockchain.biz:14051
+
+    grpcOptions:
+      ssl-target-name-override: peer0.xavante.blockchain.biz
+      request-timeout: 120001
+
+    tlsCACerts:
+      path: ../crypto-config/peerOrganizations/xavante.blockchain.biz/peers/peer0.xavante.blockchain.biz/msp/tlscacerts/tlsca.xavante.blockchain.biz-cert.pem
+
+# [Optional]. Fabric-CA is a special kind of Certificate Authority provided by Hyperledger Fabric which
+# allows certificate management to be done via REST APIs. Application may choose to use a standard
+# Certificate Authority instead of Fabric-CA, in which case this section would not be specified.
+#
+# This information can be used to (e.g.) enroll new users. Communication is via
+# REST, hence options relate to HTTP rather than gRPC.
+#
+# certificateAuthorities:
+  #
+  # [Required]. MagnetoCorp CA
+  #
+  # ca.guarani.blockchain.biz:
+    #
+    # [Required].
+    # url: http://ca.guarani.blockchain.biz:7054
+    #
+ 
+    # [Optioanl]. HTTP connection properties used for communication
+    # The properties specified under this object are passed to the 'http' client verbatim when
+    # making the request to the Fabric-CA server
+    #
+    # httpOptions:
+    #  verify: false
+    # tlsCACerts:
+    #  path: application/organization/.../ca/org.example-cert.pem
+
+    #
+    # [Optional]. Fabric-CA supports Certificate Signing Requests (CSRs). 
+    # A registrar is needed to enroll new users.
+    #
+    # Fabric-CA supports dynamic user enrollment via REST APIs. 
+    # A "root" user, a.k.a registrar, is needed to enroll and invoke new users.
+    #
+    # registrar:
+    #  - enrollId: admin
+    #    enrollSecret: adminpw
+
+    #
+    # [Optional] The optional name of the CA.
+    # caName: ca.guarani.blockchain.biz
+
+#

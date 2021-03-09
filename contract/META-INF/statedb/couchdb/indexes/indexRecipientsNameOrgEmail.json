@@ -1,0 +1,12 @@
+{
+    "index": {
+        "fields": [
+            "recipients.userId.name",
+            "recipients.userId.organization",
+            "recipients.userId.email"
+        ]
+    },
+    "ddoc": "docRecipientsNameOrgEmail",
+    "name": "indexRecipientsNameOrgEmail",
+    "type": "json"
+}

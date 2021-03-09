@@ -1,0 +1,10 @@
+{
+    "index": {
+        "fields": [
+            "issuer.userId.X509"
+        ]
+    },
+    "ddoc": "docIssuerX509",
+    "name": "indexIssuerX509",
+    "type": "json"
+}

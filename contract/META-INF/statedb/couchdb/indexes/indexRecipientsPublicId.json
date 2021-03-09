@@ -1,0 +1,10 @@
+{
+    "index": {
+        "fields": [
+            "recipients.publicId"
+        ]
+    },
+    "ddoc": "docRecipientsPublicId",
+    "name": "indexRecipientsPublicId",
+    "type": "json"
+}

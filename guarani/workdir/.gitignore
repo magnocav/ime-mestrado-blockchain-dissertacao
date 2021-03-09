@@ -1,0 +1,4 @@
+ledger/*
+chaincodes/*
+ledgersData/*
+transientStore*

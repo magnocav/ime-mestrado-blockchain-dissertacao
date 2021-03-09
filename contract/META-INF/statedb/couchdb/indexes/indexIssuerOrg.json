@@ -1,0 +1,10 @@
+{
+    "index": {
+        "fields": [
+            "issuer.userId.organization"
+        ]
+    },
+    "ddoc": "docIssuerOrg",
+    "name": "indexIssuerOrg",
+    "type": "json"
+}

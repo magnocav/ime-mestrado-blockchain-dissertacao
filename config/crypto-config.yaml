@@ -1,0 +1,105 @@
+# ----------
+# Author: Magno Alves Cavalcante < magno@cavalcante.eng.br >
+#
+# SPDX-License-Identifier: Apache-2.0
+# ----------
+#
+---
+# ---------------------------------------------------------------------------
+# "OrdererOrgs" - Definition of organizations managing orderer nodes
+# ---------------------------------------------------------------------------
+OrdererOrgs:
+  
+  # ---------------------------------------------------------------------------
+  # Orderer
+  # ---------------------------------------------------------------------------
+  - Name: Orderer
+    Domain: blockchain.biz
+    EnableNodeOUs: true
+    # ---------------------------------------------------------------------------
+    # "Specs" - See PeerOrgs below for complete description
+    # ---------------------------------------------------------------------------
+    Specs:
+      - Hostname: orderer
+        CommonName: orderer.blockchain.biz
+        SANS:
+          - "orderer"
+          - "orderer.blockchain.biz"
+          - "localhost"
+          - "127.0.0.1"
+    
+    # https://stackoverflow.com/questions/55803125/tls-handshake-failed-with-error-remote-error-tls-bad-certificate-server-ordere
+    # ---------------------------------------------------------------------------
+    Users:
+      Count: 1
+
+# ---------------------------------------------------------------------------
+# "PeerOrgs" - Definition of organizations managing peer nodes
+# ---------------------------------------------------------------------------
+PeerOrgs:
+  
+  # ---------------------------------------------------------------------------
+  # Organization
+  # ---------------------------------------------------------------------------
+  - Name: Guarani
+    Domain: guarani.blockchain.biz
+    EnableNodeOUs: true
+    Specs:
+        - Hostname: peer0
+          CommonName: peer0.guarani.blockchain.biz
+          SANS:
+            - "peer0.guarani"
+            - "peer0.guarani.blockchain.biz"
+            - "localhost"
+            - "127.0.0.1"
+    Template:
+      Count: 1
+      # Start: 5
+      # Hostname: {{.Prefix}}{{.Index}} # default
+    # ---------------------------------------------------------------------------
+    # "Users"
+    # ---------------------------------------------------------------------------
+    # Count: The number of user accounts _in addition_ to Admin
+    # ---------------------------------------------------------------------------
+    Users:
+      Count: 5
+
+  # ---------------------------------------------------------------------------
+  # Organization
+  # ---------------------------------------------------------------------------
+  - Name: Ticcuna
+    Domain: ticcuna.blockchain.biz
+    EnableNodeOUs: true
+    Specs:
+        - Hostname: peer0
+          CommonName: peer0.ticcuna.blockchain.biz
+          SANS:
+            - "peer0.ticcuna"
+            - "peer0.ticcuna.blockchain.biz"
+            - "localhost"
+            - "127.0.0.1"
+    Template:
+      Count: 1
+    Users:
+      Count: 5
+
+  # ---------------------------------------------------------------------------
+  # Organization
+  # ---------------------------------------------------------------------------
+  - Name: Xavante
+    Domain: xavante.blockchain.biz
+    EnableNodeOUs: true
+    Specs:
+        - Hostname: peer0
+          CommonName: peer0.xavante.blockchain.biz
+          SANS:
+            - "peer0.xavante"
+            - "peer0.xavante.blockchain.biz"
+            - "localhost"
+            - "127.0.0.1"
+    Template:
+      Count: 1
+    Users:
+      Count: 5
+
+# END

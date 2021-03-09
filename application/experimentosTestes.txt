@@ -1,0 +1,81 @@
+Sequência dos Experimentos por Testes de Software
+
+Para realização do experimento, os casos de testes foram sequenciados da maneira abaixo
+
+- - - - - - -
+1) Emissão Negativa
+
+#> node docIssue.js guarani alice be22-20.pdf
+
+- - - - - - -
+2) Nós da Rede Blockchain
+
+#> docker ps -a’
+
+- - - - - - -
+3) Emissão Positiva
+
+#> node docIssue.js guarani alice be22-20.pdf
+
+- - - - - - -
+4) Recuperação Positiva em Estado Emitido
+
+#> node docRetrieve.js ticcuna bob
+
+- - - - - - -
+5) Validação Negativa para Mesmo Usuário da Emissão
+
+#> node docValidate.js guarani alice
+
+- - - - - - -
+6) Revogação Negativa para Usuário Diferente da Emissão
+
+#> node docRevoke.js ticcuna bob
+
+- - - - - - -
+7) Leitura Negativa para Estado Emitido
+
+#> node docRead.js xavante fred
+
+- - - - - - -
+8) Validação Positiva
+
+#> node docValidate.js ticcuna suzan
+
+- - - - - - -
+9) Leitura Negativa para Estado Validado
+
+#> node docRead.js ticcuna bob
+
+- - - - - - -
+10) Leitura Positiva para Estado Validado
+
+#> node docRead.js xavante nancy
+
+- - - - - - -
+11) Revogação Negativa para Usuário Diferente da Validação
+
+#> node docRevoke.js xavante chan
+
+- - - - - - -
+12) Revogação Positiva
+
+#> node docRevoke.js ticcuna suzan
+
+- - - - - - -
+13) Leitura Positiva para Estado Revogado
+
+#> node docRead.js xavante nancy
+
+- - - - - - -
+14) Histórico
+
+#> node docHistory.js ticcuna bob
+
+==================
+Observação:
+No console do PEER, executar o comando para obter a alturada blockchain e o hash atual
+
+peer channel getinfo -o $ORDERERNAME -c $CHANNELNAME --tls --cafile=$ADMIN_PEER_TLSCACERT
+
+# END
