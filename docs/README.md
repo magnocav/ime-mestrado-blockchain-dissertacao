@@ -16,20 +16,20 @@ Sistema computacional disponível para uso dedicado com a seguinte configuraçã
 ### Preparar Ambiente do Sistema Computacional
 
 1. Conectar-se ao sistema através de uma console SSH:
+
 ...
     $> ssh (username)@(ip-address)
 ...
-
 2. Criar usuário FABRIC:
+
 ...
     $> sudo adduser fabric
 ...
-
 3. Adicionar FABRIC ao grupo SUDO:
+
 ...
     $> sudo usermod -aG sudo fabric
 ...
-
 4. Executar os comandos como `fabric':
 ...
     $> su fabric
