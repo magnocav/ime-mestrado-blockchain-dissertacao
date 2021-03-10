@@ -1,0 +1,211 @@
+{
+    "dateTimeIssue": "2020-07-15T03:18:18.417Z",
+    "dateTimeValidate": "2020-07-15T03:43:01.701Z",
+    "dateTimeRevoke": "2020-07-15T04:15:11.677Z",
+    "dateTimeSignedByIssuer": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.1\r\nComment: https://openpgpjs.org\r\n\r\nwl4EARMIAAYFAl8OdXoACgkQhxtDbn8QlkdahQEArpuNe6cwzKYsuvmAV0I1\r\njHTcYp4TtliI+/N5SqxH4JwA/0YoPxuxYIKFWz/vqVMtEsX+o7EnkRpJtBOL\r\n3YoM8ISL\r\n=JmwJ\r\n-----END PGP SIGNATURE-----\r\n",
+    "dateTimeSignedByValidator": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.1\r\nComment: https://openpgpjs.org\r\n\r\nwl4EARMIAAYFAl8Oe0UACgkQUitaHrdIJWGrqQEA939ZcVBV/oqx8tuB5syR\r\nZILtdDbymb6fAJwbwrlWgDEBAL+3Y1K21hm2r7uvCeEOgLTAomJK4HFg1fwu\r\nMLL0UAPG\r\n=fWC2\r\n-----END PGP SIGNATURE-----\r\n",
+    "dateTimeSignedByRevoker": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.1\r\nComment: https://openpgpjs.org\r\n\r\nwl4EARMIAAYFAl8Ogs8ACgkQUitaHrdIJWElDwD9G3LJsBjgSV9ah+Z4wnF4\r\n54aWsKx4TcUdEzZQY3Q+6XUA/2dbaYPCmHs3FfO9MC+ZcELmKQkLrkQLZc3I\r\nuWoawULB\r\n=+1g7\r\n-----END PGP SIGNATURE-----\r\n",
+    "issuer": {
+        "keys": {
+            "publicArmored": "-----BEGIN PGP PUBLIC KEY BLOCK-----\r\nVersion: OpenPGP.js v4.10.1\r\nComment: https://openpgpjs.org\r\n\r\nxk8EXtQx/RMFK4EEAAoCAwRb2U6X+zZMdIQz2OIrpttDRrSrDPt8LzSIpRlj\r\noaBu4llD+9uVNmk69LdlF3IiUegw3iYU2SHYTYeYjUGp0z8MzSRBbGljZSA8\r\nYWxpY2VAZ3VhcmFuaS5ibG9ja2NoYWluLmJpej7CeAQQEwgAIAUCXtQx/QYL\r\nCQcIAwIEFQgKAgQWAgEAAhkBAhsDAh4BAAoJEIcbQ25/EJZHN40A/AwHx9ji\r\nPgiF2EjonbbplgDJejDksXpCt4jX42HbiYc4AP9cMtDyPjxXb5Ji4rRKXyTU\r\naOUZN/W/STlsmDsh4om5E85TBF7UMf0SBSuBBAAKAgME2LqtC5fyV54FsEX4\r\nR+wq6hsagAIKHxwF8rEQ9g9ENmLFU1sMcVKQK40Y+pqs4WwJBHlyHDEsI5ZZ\r\ni4AaNRBDiwMBCAfCYQQYEwgACQUCXtQx/QIbDAAKCRCHG0NufxCWR6m3AP9n\r\nKT1msMzE6N25q+Nr5+P9jvGd5R2Io9zpFVPMLaMokAEA4E1nQx7nqAmmHLNk\r\na17JFHUKkoBrcfagwG/ukE+n/c0=\r\n=YUXG\r\n-----END PGP PUBLIC KEY BLOCK-----\r\n"
+        },
+        "publicId": "c66e890aa3ed0af4f738549f785f8fcebaa3ea7cff26eaf1502d05c0bb1f1a03",
+        "signatureOfUserInfos": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.1\r\nComment: https://openpgpjs.org\r\n\r\nwl4EARMIAAYFAl8OdXoACgkQhxtDbn8QlkcesgD+NwjqL93P25+9+clhAPl2\r\nGAsk8S9BTAzEDb/9SfhhKKkA/RMJ3mA1T22uJQKlBBd4L5wd7WWO50c9rfWa\r\nJGlM/DKM\r\n=onwl\r\n-----END PGP SIGNATURE-----\r\n",
+        "type": "PGP",
+        "userId": {
+            "MSP": "GuaraniMSP",
+            "X509": "User2@guarani.blockchain.biz",
+            "email": "alice@guarani.blockchain.biz",
+            "name": "Alice",
+            "organization": "Guarani"
+        },
+        "version": 1
+    },
+    "validator": {
+        "keys": {
+            "publicArmored": "-----BEGIN PGP PUBLIC KEY BLOCK-----\r\nVersion: OpenPGP.js v4.10.1\r\nComment: https://openpgpjs.org\r\n\r\nxk8EXtQx/hMFK4EEAAoCAwReoD+wIrtGwoSLz37HPAk9NSolTRBAYx2vgAeI\r\nNS9MbDDD+INJ29p92YtI1f6U+0N7Z/25Ds5ibygTh8zLp5xLzSRTdXphbiA8\r\nc3V6YW5AdGljY3VuYS5ibG9ja2NoYWluLmJpej7CeAQQEwgAIAUCXtQx/gYL\r\nCQcIAwIEFQgKAgQWAgEAAhkBAhsDAh4BAAoJEFIrWh63SCVh83oBAJFJA9/c\r\nz0E2fUDOWcpAkqS87uKG2Yha5QdlEI04KqqYAQDwWGM3zMaxGRYy4uWcVmiz\r\n3wZwJTj7dGOeP3A4wRMhoc5TBF7UMf4SBSuBBAAKAgMEPgKE5YWJPwoE7HoY\r\nzVh5LDuu0jTd86f3NeSqiZlvoPLn8STCN/by0Bf3b2/Q90UvYdVDm/9ggxSS\r\nlbLoZ2eocAMBCAfCYQQYEwgACQUCXtQx/gIbDAAKCRBSK1oet0glYTwUAPwI\r\no5bttN95kboBW3lY2tdfK9m8qDIXrzhwnRM1iQi1IwD/X1CKMHquWvJ+YMY+\r\n74E6tfXr6hbAkN8SpDgHNPhfNx8=\r\n=VCwk\r\n-----END PGP PUBLIC KEY BLOCK-----\r\n"
+        },
+        "publicId": "bed43ebc3ab34a77c20c72a78a0b5ea50471c2a8d2a0e32d394b846a9818724c",
+        "signatureOfUserInfos": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.1\r\nComment: https://openpgpjs.org\r\n\r\nwl4EARMIAAYFAl8Oe0UACgkQUitaHrdIJWHbOQD/W+VCeyJWfh45HGk8ilZP\r\nii0UUPUuo2EHjTAyTPJ5R/0A+wf6UDuPIQeS3uCKRR+Ze106+iM8/QIBvtN5\r\nhSJNLGC7\r\n=UOP2\r\n-----END PGP SIGNATURE-----\r\n",
+        "type": "PGP",
+        "userId": {
+            "MSP": "TiccunaMSP",
+            "X509": "User2@ticcuna.blockchain.biz",
+            "email": "suzan@ticcuna.blockchain.biz",
+            "name": "Suzan",
+            "organization": "Ticcuna"
+        },
+        "version": 1
+    },
+    "revoker": {
+        "type": "PGP",
+        "version": 1,
+        "userId": {
+            "name": "Suzan",
+            "organization": "Ticcuna",
+            "email": "suzan@ticcuna.blockchain.biz",
+            "MSP": "TiccunaMSP",
+            "X509": "User2@ticcuna.blockchain.biz"
+        },
+        "keys": {
+            "publicArmored": "-----BEGIN PGP PUBLIC KEY BLOCK-----\r\nVersion: OpenPGP.js v4.10.1\r\nComment: https://openpgpjs.org\r\n\r\nxk8EXtQx/hMFK4EEAAoCAwReoD+wIrtGwoSLz37HPAk9NSolTRBAYx2vgAeI\r\nNS9MbDDD+INJ29p92YtI1f6U+0N7Z/25Ds5ibygTh8zLp5xLzSRTdXphbiA8\r\nc3V6YW5AdGljY3VuYS5ibG9ja2NoYWluLmJpej7CeAQQEwgAIAUCXtQx/gYL\r\nCQcIAwIEFQgKAgQWAgEAAhkBAhsDAh4BAAoJEFIrWh63SCVh83oBAJFJA9/c\r\nz0E2fUDOWcpAkqS87uKG2Yha5QdlEI04KqqYAQDwWGM3zMaxGRYy4uWcVmiz\r\n3wZwJTj7dGOeP3A4wRMhoc5TBF7UMf4SBSuBBAAKAgMEPgKE5YWJPwoE7HoY\r\nzVh5LDuu0jTd86f3NeSqiZlvoPLn8STCN/by0Bf3b2/Q90UvYdVDm/9ggxSS\r\nlbLoZ2eocAMBCAfCYQQYEwgACQUCXtQx/gIbDAAKCRBSK1oet0glYTwUAPwI\r\no5bttN95kboBW3lY2tdfK9m8qDIXrzhwnRM1iQi1IwD/X1CKMHquWvJ+YMY+\r\n74E6tfXr6hbAkN8SpDgHNPhfNx8=\r\n=VCwk\r\n-----END PGP PUBLIC KEY BLOCK-----\r\n"
+        },
+        "publicId": "bed43ebc3ab34a77c20c72a78a0b5ea50471c2a8d2a0e32d394b846a9818724c",
+        "signatureOfUserInfos": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.1\r\nComment: https://openpgpjs.org\r\n\r\nwl4EARMIAAYFAl8Ogs8ACgkQUitaHrdIJWGYfAD9GMSYpjS2ZrTWvM/u/9rv\r\n37vIAbhPX3AgOGVmzUytmqMA/3ZsKb2GekkQESCfrflIhUvgb7DTt9zxtkUX\r\n+OHRORhX\r\n=g3AH\r\n-----END PGP SIGNATURE-----\r\n"
+    },
+    "reader": {
+        "keys": {
+            "publicArmored": "-----BEGIN PGP PUBLIC KEY BLOCK-----\r\nVersion: OpenPGP.js v4.10.1\r\nComment: https://openpgpjs.org\r\n\r\nxk8EXtQx/hMFK4EEAAoCAwReoD+wIrtGwoSLz37HPAk9NSolTRBAYx2vgAeI\r\nNS9MbDDD+INJ29p92YtI1f6U+0N7Z/25Ds5ibygTh8zLp5xLzSRTdXphbiA8\r\nc3V6YW5AdGljY3VuYS5ibG9ja2NoYWluLmJpej7CeAQQEwgAIAUCXtQx/gYL\r\nCQcIAwIEFQgKAgQWAgEAAhkBAhsDAh4BAAoJEFIrWh63SCVh83oBAJFJA9/c\r\nz0E2fUDOWcpAkqS87uKG2Yha5QdlEI04KqqYAQDwWGM3zMaxGRYy4uWcVmiz\r\n3wZwJTj7dGOeP3A4wRMhoc5TBF7UMf4SBSuBBAAKAgMEPgKE5YWJPwoE7HoY\r\nzVh5LDuu0jTd86f3NeSqiZlvoPLn8STCN/by0Bf3b2/Q90UvYdVDm/9ggxSS\r\nlbLoZ2eocAMBCAfCYQQYEwgACQUCXtQx/gIbDAAKCRBSK1oet0glYTwUAPwI\r\no5bttN95kboBW3lY2tdfK9m8qDIXrzhwnRM1iQi1IwD/X1CKMHquWvJ+YMY+\r\n74E6tfXr6hbAkN8SpDgHNPhfNx8=\r\n=VCwk\r\n-----END PGP PUBLIC KEY BLOCK-----\r\n"
+        },
+        "publicId": "bed43ebc3ab34a77c20c72a78a0b5ea50471c2a8d2a0e32d394b846a9818724c",
+        "signatureOfUserInfos": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.1\r\nComment: https://openpgpjs.org\r\n\r\nwl4EARMIAAYFAl8Oe0EACgkQUitaHrdIJWGQtgEA9KD95kYlHHLkb3S5EWZE\r\nzEORMLaing1kcBrGPkihwHAA/ikwmv+vpmUyGNGpQ0aZ2RLmG9dxEANR6XnX\r\nQXIfS8w6\r\n=tV0E\r\n-----END PGP SIGNATURE-----\r\n",
+        "type": "PGP",
+        "userId": {
+            "MSP": "TiccunaMSP",
+            "X509": "User2@ticcuna.blockchain.biz",
+            "email": "suzan@ticcuna.blockchain.biz",
+            "name": "Suzan",
+            "organization": "Ticcuna"
+        },
+        "version": 1
+    },
+    "recipients": [
+        {
+            "initVector": "-----BEGIN PGP MESSAGE-----\r\nVersion: OpenPGP.js v4.10.1\r\nComment: https://openpgpjs.org\r\n\r\nwX4DqiMqm3kjqFESAgMET2VlGMCi13d+6k++NMOX7PV6PLojy2AMkYBF8V9x\r\nehHiu8VzoxSkYDf4Emmonny5L5ezH72fAckVL9DHR2xSmzACCMS8aYdtCXQ0\r\nBEjkvA6ti1k+cEFvLAYYgKdVwTAAAJR+XeORKUCxE00qFWx6N7LSwAYBOzG5\r\nvxoCWGyET8i6y4ShLXve4XhVXZDvEx+dw8DW87BEK3k3eS8WDwwCQo4taHiv\r\n7kOjh1gW1Oaj2pX9intEA+uq7Bj0WCZtqraEMJGwX6RhjQfrZh1IymoMf81e\r\nn2bEvEA9PUNPkDeDr4Q92KsWse/YtNbJyozbztutXh/Y+u77a8nRfrcaFJUG\r\nwUYS6wURu58DrxvYRRICJdWUSbCJc+jtIKBqnDAholMiuGiJlDd6P2PeQ4q8\r\n9KwRm7uqwN+93GzSmAA=\r\n=aftD\r\n-----END PGP MESSAGE-----\r\n",
+            "keys": {
+                "publicArmored": "-----BEGIN PGP PUBLIC KEY BLOCK-----\r\nVersion: OpenPGP.js v4.10.1\r\nComment: https://openpgpjs.org\r\n\r\nxk8EXtQx/RMFK4EEAAoCAwT9/xpgqUkBStAQeh2a+mYU9lIoEwESgqliopQ4\r\ne3xYlYu5GIDU9HadHYf3d6d0lu0MPh9R5SrGVyfhY49N/bWMzSJLYXRlIDxr\r\nYXRlQGd1YXJhbmkuYmxvY2tjaGFpbi5iaXo+wngEEBMIACAFAl7UMf0GCwkH\r\nCAMCBBUICgIEFgIBAAIZAQIbAwIeAQAKCRCB5UGRgjRNURt6AP0QC978L2Yh\r\nRXyRnlWo1mBEKzqWzPS6x7wA9gh2UsCZswD+IXR5sTahX/fA/Axc32eQKH6B\r\nranB1Gh42ZLw58YmzAjOUwRe1DH9EgUrgQQACgIDBDqhl90QYdFCuEZvH0Ya\r\n4WT1IwNimmqV31qDEhshj4rXkQL4mH4n7m3zWSJWGDp5z0rSt2JGpTnyTCx2\r\n1EaI8NoDAQgHwmEEGBMIAAkFAl7UMf0CGwwACgkQgeVBkYI0TVHOVgEAxn/x\r\nLP26Z1sN3SwttiYbYQdpkla1C+5UgyjBvyG6HVAA/2xk2Bfp7iuXKNas90eF\r\nyKIuFBZWdpAl0MY6J+wx6i4m\r\n=7D02\r\n-----END PGP PUBLIC KEY BLOCK-----\r\n"
+            },
+            "password": "-----BEGIN PGP MESSAGE-----\r\nVersion: OpenPGP.js v4.10.1\r\nComment: https://openpgpjs.org\r\n\r\nwX4DqiMqm3kjqFESAgME2Icvt0/ulJ1CCpqYth4Qx7m4T0UlGQTdzJkh6uzj\r\nhqXKj7vvQDPvvIHftil4CC8intQNuk0KZqABKmZMzVkfZDCawdliAji+Ux7o\r\nJ5DWnYtfVLHhU+sQIfCHF1trL4J7/ceo72aeCUmVKlmcAg3x8mDSwBoBZ+IT\r\nGgaaTqbxtkLQYfBR2n1dtI94Ihkew+Q9OKDt9CbXMYuc+DlwnRqQLFeadCM/\r\nlCv79+EujwR6EpC0+TMT+RXMnR4qYKd+3V1qKziGB9mzh+nSpVKApDQqn+uK\r\nOQwzGwViNF9tvoxc+bGUuG1ho7d+K0F9W3s7q7vxO/CX39zVa0k6JUEgrhoA\r\nuFpGdedbjZNnkSKj7jeUUP5qFz7YU1qadlrRZBIICwBfEKKcabHla+jlaJPP\r\nEZm+GPP0qev442qJ8m3PG1tiGZQFZNcnmMV8lKVZpyEWhQ==\r\n=KR4f\r\n-----END PGP MESSAGE-----\r\n",
+            "publicId": "638eb4646f546e2928d3c9fbf1eddb42387067dbba2bfad38d0e7f5103bc7059",
+            "type": "PGP",
+            "userId": {
+                "MSP": "GuaraniMSP",
+                "X509": "User2@guarani.blockchain.biz",
+                "email": "kate@guarani.blockchain.biz",
+                "name": "Kate",
+                "organization": "Guarani"
+            },
+            "version": 1
+        },
+        {
+            "initVector": "-----BEGIN PGP MESSAGE-----\r\nVersion: OpenPGP.js v4.10.1\r\nComment: https://openpgpjs.org\r\n\r\nwX4Ds7ZRm8Sk4eYSAgMEA9nT08pNtxFI3GFe0i3h5OpQSk9v1CSGRW69m4b8\r\nLpLxSojxfvDhMWVo8GtdIKr6ccjKjBxMOPbph419MEf05jBx6oa4mRDM/HA/\r\nrfQiRHM14j8UOb3NOfs5pcR2GOKEO9I3wJWgSTULoUGRmmLTDTbSwAYBja5B\r\nuzhxFgE+g1J6hZ4DXQJtt9i46+bwuhu/85KM7PpkjKWj5JthYJzLoLRMSWSY\r\ngO0Pkh2AFvP8L2GOVuTbWheuu2xCGmSFyPieJDt4Aqr8J9G1GP61Raulc4/y\r\n11LPXhkyd63Q3LnmQK6u82RjkGbdsy/zas+0ATpNHH1+XOZFiyEV/fbIOHK2\r\nUkIx2V1us8ww9QKMG1FVCwxJ74ebejD0HsCNkFcIJ+GlimfKQKs4LoSuudOs\r\nGNHK1c4ZYwcnDiu/eME=\r\n=YfKn\r\n-----END PGP MESSAGE-----\r\n",
+            "keys": {
+                "publicArmored": "-----BEGIN PGP PUBLIC KEY BLOCK-----\r\nVersion: OpenPGP.js v4.10.1\r\nComment: https://openpgpjs.org\r\n\r\nxk8EXtQx/RMFK4EEAAoCAwSdmJJzZeUBdNX1BMAfIVKCv2EG8UlCdhuof9ZO\r\nHOS7s3jlaURdQwoJ1pLrLIKvoXFhuQ0NBIUaMYH9UPX/JluuzSJMaXNhIDxs\r\naXNhQGd1YXJhbmkuYmxvY2tjaGFpbi5iaXo+wngEEBMIACAFAl7UMf0GCwkH\r\nCAMCBBUICgIEFgIBAAIZAQIbAwIeAQAKCRCmegGEl5gulguoAP0aZfJ/MhO3\r\nOBdUcWiEqdZJEtwulCutmGGnw5W4Sg6LuAEAjkYr3rX7+HvEJFg/UjX++24M\r\nJLPJyh7F+urxWa/NyEHOUwRe1DH9EgUrgQQACgIDBOXPx65rcLv3qV87EW/S\r\ndFDpWFCo8RP3qJ2DcrljFVmQDfiyOotKXFeOj4onFpNo1Aoe+3pvZlhF1k3L\r\nMrZBPFsDAQgHwmEEGBMIAAkFAl7UMf0CGwwACgkQpnoBhJeYLpbvcAD8D0fG\r\nM6B+EJ8L8fLXA2xQ6JfpA9n/WrXYlZBDGclCw54BAON/BYflF6GSW7/0K7x6\r\n/92FcBm1OBErj9cD3tFQUlCN\r\n=cIH1\r\n-----END PGP PUBLIC KEY BLOCK-----\r\n"
+            },
+            "password": "-----BEGIN PGP MESSAGE-----\r\nVersion: OpenPGP.js v4.10.1\r\nComment: https://openpgpjs.org\r\n\r\nwX4Ds7ZRm8Sk4eYSAgMEoAz6H1MNl3QUOC96Yep/doKkKmZZiFdErwTNWtQX\r\n55J4olI9bujUS+iiG64OWAT8GbOw/JkVo5ryzVY9gnlt5jBo+g2KGdJs5Ot7\r\n9SuvSmGAWeDjHnmVop2ewak429wVA51W0CyH6RhvJVGgJAOJ/nLSwBoB/MBo\r\nktZtqLna8hVaaEaI7JNB7Nw7xCvWPqXU/otIZ9j/yoPjggv4umaAqdkgveuk\r\nEmyBq+NPw84GA1F7h1r2RhgGaDn85L6K6y0JkC1ZF9hYCb1HUiy+kHjVRb2t\r\np2opjtGvPLmp7VBlVYHVjIZD4QUkEO6/elSb7VYM0Aew2IZ9hyN6c6MfUGqE\r\naYtiFKosrBSzGIXNKxScO09X+kUOkrh0Pcq+gzxAV4/fma1aiWvX7dbVuMV7\r\nMgo/0LjNl08uvX2vHErAwSaMqkPXtLCHu0h3DcC6O09F8w==\r\n=QcJ5\r\n-----END PGP MESSAGE-----\r\n",
+            "publicId": "97d9dfe31d0ed38ad0e22762c1a73d063b282647d5104e9439722d8f6a03bb29",
+            "type": "PGP",
+            "userId": {
+                "MSP": "GuaraniMSP",
+                "X509": "User2@guarani.blockchain.biz",
+                "email": "lisa@guarani.blockchain.biz",
+                "name": "Lisa",
+                "organization": "Guarani"
+            },
+            "version": 1
+        },
+        {
+            "initVector": "-----BEGIN PGP MESSAGE-----\r\nVersion: OpenPGP.js v4.10.1\r\nComment: https://openpgpjs.org\r\n\r\nwX4DMovFbkdR3UoSAgMEPSf8MrnuV/Tioi84Wk5r1RoFNzO/ept+Qa/ziKtT\r\nvoj3d2cI32WCD8WKZ4JlUYIZKddiO11Id0b2xYFBKn/wnjC58Sg2AUBzQyGD\r\n/1I6SauZ/+2IB/axkVIjrvS9+OI+LTTv67MgpqIePQdCs20FaRzSwAUBP+oy\r\nKrfUEeAQ7jMzZuiEM3IntF6QTqJoathUUQjZSIYPTwwnfv5MmdBUXoARIFkE\r\ncA3JguPTYFKf0uxO8/bvvVBvd7rUDfFFnMB9cEpJ7az5gYnaO1r3u2e7I5/l\r\nwMkVzvtgo+58LijGr59bUqTs1mVXLzeYqiq0ZkRwNWWTqQru1uYuXnQaMELa\r\nCRSXzp9ANU+6fraI74QoUdSeO/2haACoyoiCfUdG2hCtAuYBPDK74Jt++DPM\r\npEDRrxCMaHyBYBYU5g==\r\n=XtEQ\r\n-----END PGP MESSAGE-----\r\n",
+            "keys": {
+                "publicArmored": "-----BEGIN PGP PUBLIC KEY BLOCK-----\r\nVersion: OpenPGP.js v4.10.1\r\nComment: https://openpgpjs.org\r\n\r\nxk8EXtQx/hMFK4EEAAoCAwTIWXzpEzqnSQASvC7kE6zvc24kqzciweBhGs+H\r\ncwgxs40/4LiG6/eLc0H8hf17zX/7+KpFz7ik0EsznUKwUwfyzSBUZWQgPHRl\r\nZEB0aWNjdW5hLmJsb2NrY2hhaW4uYml6PsJ4BBATCAAgBQJe1DH+BgsJBwgD\r\nAgQVCAoCBBYCAQACGQECGwMCHgEACgkQbHhG5hMTfA/YIgEA8s5eqfy7lsTw\r\ngOoO8VTnNKxLw6Bku0bRzPScY+b1pxoA/3R1f7zGYRt96fAmPckC+Tx41OWt\r\nHRQoa4QN/HZxB0knzlMEXtQx/hIFK4EEAAoCAwRqPpeMdNuIiZ5Q5ycle+1p\r\ntO9eIUTRyeB/J9o13QbpF1m3kw3P1+naKsP2AA3nKPrW8dQx5CMJdcL18h/P\r\ndri7AwEIB8JhBBgTCAAJBQJe1DH+AhsMAAoJEGx4RuYTE3wPH4QBAJNCwMcl\r\n8Zp3ZSkPJ0Jbil8LCvQHLt/ls56XhxpICl1IAP44lVVXWKmxdSW7iv0bOeys\r\nrCtouwuOdSwrySOMIuktWg==\r\n=uy+u\r\n-----END PGP PUBLIC KEY BLOCK-----\r\n"
+            },
+            "password": "-----BEGIN PGP MESSAGE-----\r\nVersion: OpenPGP.js v4.10.1\r\nComment: https://openpgpjs.org\r\n\r\nwX4DMovFbkdR3UoSAgME0Lgp/qo6hpPIRgP4AHmZe5Qb6xMO0mkLsmdqrkSq\r\nQEnWQHecKLErQzdlP899rh9pwksQCHkPwHVBOfxmrGPkMTAtwzJtxVw0aIt1\r\nCOtizjyofgEDQMrVrNCKvypzLqUi8SfH81iBLQXIeLgyqoXNgZPSwBoBNb7n\r\n1LNvxn+sd74rI3HCmcV2bLYw/89uy0zdchC26hdMYFuvx/z8E1moHY9QkwXC\r\nI7Esw/F1tOyssUaDw9lC//6mJLynHZ1XjAGQlr3/r5It3d/qA64wbzjARwoZ\r\nXtEVZnWou4aym7Pc8Jt2MtPEt6mwUcOcO5jbdn4O6fJwIU65JkvYSmuS8bUq\r\nvNM4yipa8SMQk+6mcbptOlHV8Jj2EWOCMC0mj54NYXu3jnSqHWkgBdDioPNm\r\nBr7NcknGj2Keryskzrvy/FbSx4TForE1euVxoTwNi9SM6Q==\r\n=+LR0\r\n-----END PGP MESSAGE-----\r\n",
+            "publicId": "2e14cc19f3584669c1fc05bff0f0a4c645d6856297c3794c9ee9c87e58ce5bb3",
+            "type": "PGP",
+            "userId": {
+                "MSP": "TiccunaMSP",
+                "X509": "User2@ticcuna.blockchain.biz",
+                "email": "ted@ticcuna.blockchain.biz",
+                "name": "Ted",
+                "organization": "Ticcuna"
+            },
+            "version": 1
+        },
+        {
+            "initVector": "-----BEGIN PGP MESSAGE-----\r\nVersion: OpenPGP.js v4.10.1\r\nComment: https://openpgpjs.org\r\n\r\nwX4D4HmLLxqQlm0SAgME6A3Fd7wyRq3TbczKSeDfnBecIpYh3Nsly89pb451\r\no7nsr1ZG5eczZ35y3qwaXXyHOCGzLlRHkd6e24qj3EOZbDDQ3g9fQwrgU1Rw\r\nDw0K3eIIf9jRVXWZdUHvsZ11pv2ex6WLHTBRKCRYLBACZYrQsj3SwAcBahoP\r\njFWQQS3k7Dg20MLRmiiiYsNAwjZhQQZLpdzs6SXQetZPTQhKQvkbCs/RqHCo\r\nlswUVniffACEVAmVmjoDmawAK2ngRknXNGh86KpTN9ADpiixwe+GCPn3Gi6D\r\nADQJtB6+YaJD0JKlZcAEXxKfkyMEhi+tAXrxL5C/pimusqhixG5TfSKYejnX\r\nStvGqPUMwlu2fE6gFhRW+3adYoww3FFueuSIjuO1GK9Qd83ypkL/LCCMVz7T\r\nUVmUt1zxKpOpPVE/eZ71\r\n=2K7+\r\n-----END PGP MESSAGE-----\r\n",
+            "keys": {
+                "publicArmored": "-----BEGIN PGP PUBLIC KEY BLOCK-----\r\nVersion: OpenPGP.js v4.10.1\r\nComment: https://openpgpjs.org\r\n\r\nxk8EXtQx/hMFK4EEAAoCAwReoD+wIrtGwoSLz37HPAk9NSolTRBAYx2vgAeI\r\nNS9MbDDD+INJ29p92YtI1f6U+0N7Z/25Ds5ibygTh8zLp5xLzSRTdXphbiA8\r\nc3V6YW5AdGljY3VuYS5ibG9ja2NoYWluLmJpej7CeAQQEwgAIAUCXtQx/gYL\r\nCQcIAwIEFQgKAgQWAgEAAhkBAhsDAh4BAAoJEFIrWh63SCVh83oBAJFJA9/c\r\nz0E2fUDOWcpAkqS87uKG2Yha5QdlEI04KqqYAQDwWGM3zMaxGRYy4uWcVmiz\r\n3wZwJTj7dGOeP3A4wRMhoc5TBF7UMf4SBSuBBAAKAgMEPgKE5YWJPwoE7HoY\r\nzVh5LDuu0jTd86f3NeSqiZlvoPLn8STCN/by0Bf3b2/Q90UvYdVDm/9ggxSS\r\nlbLoZ2eocAMBCAfCYQQYEwgACQUCXtQx/gIbDAAKCRBSK1oet0glYTwUAPwI\r\no5bttN95kboBW3lY2tdfK9m8qDIXrzhwnRM1iQi1IwD/X1CKMHquWvJ+YMY+\r\n74E6tfXr6hbAkN8SpDgHNPhfNx8=\r\n=VCwk\r\n-----END PGP PUBLIC KEY BLOCK-----\r\n"
+            },
+            "password": "-----BEGIN PGP MESSAGE-----\r\nVersion: OpenPGP.js v4.10.1\r\nComment: https://openpgpjs.org\r\n\r\nwX4D4HmLLxqQlm0SAgMER1+fXAcOgZMK7G1wjIimha+iG18P7XMR7X+//dBO\r\nL43AVaMOLdRzTnJiOTzYBPWdnnzgeBYruTv2RneIgpV1tTD+bXCYT9i1T8vR\r\nJ2N3KeFUQ4jfN1Uqhax9c7AmIqdY8WeOlly6zmD2mcJ8kOrUlGzSwBoBigeW\r\n2nK8ZY5Kf0/QXut+UR5rGpw3EA18YbwGvftiuYPsYlAlSOewGOLV4Sc0WNsc\r\nPn6Mx8ubiMBE66Xpnx4+nOBwEhIJi/GUF4cRMR+NjVwODxzRYnCeJGq1Mrkb\r\n15PALXK9+IYiT3RKFLHgEJvzaiwD+e8wUh7apreeji6hWZTe8Re8pFNL6rPY\r\nxbKL7XEV5goQOISqLgXqXZscSF2xC7AdBVdTSHwSUOFaQoFZFY2kvPKPHHHN\r\n/Ko7QyBvqTbfViy89PPMo94lD1crv5MWl+LXtYbvBdNa8w==\r\n=BPSx\r\n-----END PGP MESSAGE-----\r\n",
+            "publicId": "bed43ebc3ab34a77c20c72a78a0b5ea50471c2a8d2a0e32d394b846a9818724c",
+            "type": "PGP",
+            "userId": {
+                "MSP": "TiccunaMSP",
+                "X509": "User2@ticcuna.blockchain.biz",
+                "email": "suzan@ticcuna.blockchain.biz",
+                "name": "Suzan",
+                "organization": "Ticcuna"
+            },
+            "version": 1
+        },
+        {
+            "initVector": "-----BEGIN PGP MESSAGE-----\r\nVersion: OpenPGP.js v4.10.1\r\nComment: https://openpgpjs.org\r\n\r\nwX4D2v+wSllZK7sSAgMEq/JlFP8jAsAshgqFVe8eqLOCsusXdzJBXzjqiWYs\r\nQMiiASV4miDzHffmUqwKPuyRwPjWoeKBHoGNiSf18zT54zBSmIJgOoxCsmLe\r\nnWmsaH+HAyKIsSPP5u6EAX5PYZrD/NtidFKlIGwdlQBFhFtpNYLSwAYBGKU5\r\n8GEbqiJkzavcTm4bgY9qpKOo3HWBhXL048u2GSyaWiuoSq9JlSJ8001Bh+ZQ\r\nA7+WWmu1/3KHEuOjhAj2lz0j/JcUD5lEiCWlDUC1112sZScEw+I2V0F1DwfS\r\n2tPHlnqfOKFwSzY6wjrT4eXW7X5xK/bChQfWrOvOL4B+fXc+tSKu8PHZ93Zx\r\nM5CJE6/gq9vABif4hn3wLkkEjK/XFChK0o72qKApW3kZpFLFR4qeKTgkBEP2\r\n/+5GzEq5NFhdw/odyCM=\r\n=zc8D\r\n-----END PGP MESSAGE-----\r\n",
+            "keys": {
+                "publicArmored": "-----BEGIN PGP PUBLIC KEY BLOCK-----\r\nVersion: OpenPGP.js v4.10.1\r\nComment: https://openpgpjs.org\r\n\r\nxk8EXtQx/BMFK4EEAAoCAwT6jmJZtZpqu7l0sbEtwjhdNFw6PNcQKjwl/Shq\r\nyj6me8b2BANkUv0XQz/cvKVaShoLG5MS39p3Uh2u59S+l6DvzSJGcmVkIDxm\r\ncmVkQHhhdmFudGUuYmxvY2tjaGFpbi5iaXo+wngEEBMIACAFAl7UMfwGCwkH\r\nCAMCBBUICgIEFgIBAAIZAQIbAwIeAQAKCRAMRxx/tTlfOLM7AQChqaJ12CON\r\nywvoeDLahZpmPfk3WLyuO/ak679Bi59wcgD/Uqzqxf3i4+79/qdHIzyeayVv\r\nvodye/ZeuPI6Aym2+8zOUwRe1DH8EgUrgQQACgIDBMKsJm8YQuQ1hqm9JxDN\r\nRP1z44KIv+iBs2LNx56rflWGWNT7lHj8/eMjmOzIlf0bvLRz752C1qodtSZm\r\n4yqW9eMDAQgHwmEEGBMIAAkFAl7UMfwCGwwACgkQDEccf7U5Xzi67gEAmfgH\r\nmCJEoREyuh5ykadpVwDM44C1mL4YTG2CilVXYMMA/3KhzWnjS7/+6aT9zREV\r\nRUBnjmBJykj/MKdBajpz21CD\r\n=w/UQ\r\n-----END PGP PUBLIC KEY BLOCK-----\r\n"
+            },
+            "password": "-----BEGIN PGP MESSAGE-----\r\nVersion: OpenPGP.js v4.10.1\r\nComment: https://openpgpjs.org\r\n\r\nwX4D2v+wSllZK7sSAgMEiQRSADLQOsBvZGHyxTaS5s9zVhSu5mk9vTAuMTnf\r\nAxOz+IIlScRhqxYGrV7NTTergzFjAxCZ7My28Fagl8Xw0TB8ZT85PknnQAMT\r\nL8zOyHJxJrLAME6iath11pazUuVNPLrau9U9lAjZaLXqV3YvsbDSwBsBK4TO\r\nGaa4UDR+23X6VDfg4o0fwoJuy4ofzQS+G6qwjO2X9gVBVL2in6ZyGS41Gdtz\r\nis2YvVPbgL3O9P5shQam2vQ8tBLVV7RnvH3R/Abijve+kjkuvsn2bLkNmAmC\r\nubtZoTjJuE6fEf3PfBKeo2ksLil+/Eq0/YF1Iz27kc+nVKFWKCUzCyZuXvjY\r\nSIGlrbSEd7c2XNy4ihE/jQQXYZQZ61WY6UVuR2QVxQl0NASH03fBJQ9jRMvA\r\neMdk3cCcPpwKTWtQf67mgeN7D59U8taaT8X1LrXrnMMJny4=\r\n=t0gV\r\n-----END PGP MESSAGE-----\r\n",
+            "publicId": "122edecde3bd0ae6128a304a189709fed2c920c6f0a24e51bdff5abb5607738c",
+            "type": "PGP",
+            "userId": {
+                "MSP": "XavanteMSP",
+                "X509": "User2@xavante.blockchain.biz",
+                "email": "fred@xavante.blockchain.biz",
+                "name": "Fred",
+                "organization": "Xavante"
+            },
+            "version": 1
+        },
+        {
+            "initVector": "-----BEGIN PGP MESSAGE-----\r\nVersion: OpenPGP.js v4.10.1\r\nComment: https://openpgpjs.org\r\n\r\nwX4D//8jWIazh24SAgMEwX3EB4rQD5jHLYqqXsW5CppobKlhCRxpj5qTuCxt\r\na5vmmR3tRzr80i+cmEBr4A463TZM3rNCkHA3dMtG0/XYSjDwYzBFo/lTf2DJ\r\nNIT7gIB+uRh16955rIPAeZNxrn9avJQdbNOZtXGZvXIbejW72C/SwAYB70o5\r\nWD5HqiSaKlq2g8/C9IuA7IC4dCP1q7uIA/hU9bAxaPRHOMOg0tYc1fJL4NRc\r\nW/8lDNl6Q+Jgj2hG7YE7JrHbMeCHrPYrF9LgjOSoP9oa8huAn65aHtnHvOdu\r\nur6SdBMmGTpd+bzNWQZtiTRv86pdSADVXjasuuoKgaWD7ixOdeNfVSO62uTz\r\nhCbPI7LneG17TfddChEPyyokt43gjVNm6lYWQxsYlvjKmo5na+MefHD7W2VU\r\n0F1vBNYDpglS/QIKbc4=\r\n=WCjM\r\n-----END PGP MESSAGE-----\r\n",
+            "keys": {
+                "publicArmored": "-----BEGIN PGP PUBLIC KEY BLOCK-----\r\nVersion: OpenPGP.js v4.10.1\r\nComment: https://openpgpjs.org\r\n\r\nxk8EXtQx/BMFK4EEAAoCAwRzHlFuYwTQ2p0D9a4tHDaMd0F33KmwVSp4eiz0\r\nLxZs383WBza1Jcf28HJNHMY8tQ1kJ3sxxeDamNP1585FH6bWzSROYW5jeSA8\r\nbmFuY3lAeGF2YW50ZS5ibG9ja2NoYWluLmJpej7CeAQQEwgAIAUCXtQx/AYL\r\nCQcIAwIEFQgKAgQWAgEAAhkBAhsDAh4BAAoJEGf+7ot1Mw9ZO1MA/1ZMNr9L\r\nAaGYM1We0p7fZ//X69XVoGhIOxsvzCO7wRwRAQC9Sq/f2tbeamyudy35t/tJ\r\ntZGDwoVzHKLf6RCErfc4a85TBF7UMfwSBSuBBAAKAgMEBsNUH5iZg6kxXEhc\r\nowFVRIJy+rWbnvxyIV7ZMXIzOrSDkhB1PDFGNwydTrWNnmO7sSE9SIxvyT6e\r\nGSjhfCQd7AMBCAfCYQQYEwgACQUCXtQx/AIbDAAKCRBn/u6LdTMPWYKxAQCD\r\n+fjzB/iEgj3hYBiSmR1DWdIZb7bkA55j0yOP/sJB9wEA5FzHxIznFSbuBG1C\r\nVGDCm35XZmdVmdUqzqD4Qzr39FQ=\r\n=SXo1\r\n-----END PGP PUBLIC KEY BLOCK-----\r\n"
+            },
+            "password": "-----BEGIN PGP MESSAGE-----\r\nVersion: OpenPGP.js v4.10.1\r\nComment: https://openpgpjs.org\r\n\r\nwX4D//8jWIazh24SAgMElvXDfiF3Z9q+bItG8z6lKf7yJvGLm6CcVDA4/p0g\r\nM7ZkBjkCjIcY4KQwYX0IfYDpw3xf28DbKGii+qUQwCWywjCWRuJYaa2/jjXX\r\n7BOG5MmHPE/s03LTSN4BArajZEwX7BG6X8ryKMyRt0sBBRQ8MJnSwBsBPxm+\r\nvAAivBDc+ZTSrDrIwQz9M4j6q68b+SYXztIm2INI/IxD2N+xb1jvHTaCXtbC\r\nVHWL2knTmwsyhfOe+DIRKxNkZJeqp9kxmmEJFob3Kx+y7heDQjcZ6bfAqsBP\r\ni2u+pzie2wuqwwpSRjXUJW+Ojx2Es9C5jIk9elMR+uEOH6FlB71IbSnNwX2g\r\nO6SaHNnw/gFS/YUD/kmJSfswFD+z4EARhoyaR3TbiHDH7XvMawIfdq+D5Iyi\r\n47snA7aEowadsDWIptMZ+Jrq+pDcFCC1hVFliP3ei6cQWmc=\r\n=q9sP\r\n-----END PGP MESSAGE-----\r\n",
+            "publicId": "cec370dabd991507514d8830a04a30e2c8e562275555bfa75299d7406c1afde5",
+            "type": "PGP",
+            "userId": {
+                "MSP": "XavanteMSP",
+                "X509": "User2@xavante.blockchain.biz",
+                "email": "nancy@xavante.blockchain.biz",
+                "name": "Nancy",
+                "organization": "Xavante"
+            },
+            "version": 1
+        },
+        {
+            "initVector": "-----BEGIN PGP MESSAGE-----\r\nVersion: OpenPGP.js v4.10.1\r\nComment: https://openpgpjs.org\r\n\r\nwX4D84QlmaS8DFISAgME4YZ3+lgK3Xj+m5w+fSy6U7DJ4U0WQz07c+ZUXslR\r\nLUMHfVbXX0uoMp7KosJUUzH+4wWME5sS4WC3nQoDzd5kpTDO2fueG9tTdxGO\r\nnmXfRHeKqx2N4lXAwiXDAkBNGLOXvMjr8i6pzfd+wFQpeF1KUo/SwAYBSPQO\r\nUuQ9PtFKXMJu42h+83l2OE95J+Wh9V/+YCsGO+6QPKyUymap8H+3Y5fQdJqc\r\nfITXUlWcuCTV/4YoNOOk5bfBM2OO0nXAE1EcGdVWzp2O8pqAbAzVahpE+hZx\r\nU0j2ySIL9/XryvN57wWd3HLyCzgRNAhlwNA19NGVO+AZ+kKtkVhGj4tvnScd\r\nWJtuQBpQUUJArNg+697dRvEnqjvZM1upsAtdNVVXv1aLYK599hDwuzxekCPK\r\nlrYyv9He44mxoAlNg/I=\r\n=QzzP\r\n-----END PGP MESSAGE-----\r\n",
+            "keys": {
+                "publicArmored": "-----BEGIN PGP PUBLIC KEY BLOCK-----\r\nVersion: OpenPGP.js v4.10.1\r\nComment: https://openpgpjs.org\r\n\r\nxk8EXtQx/RMFK4EEAAoCAwRb2U6X+zZMdIQz2OIrpttDRrSrDPt8LzSIpRlj\r\noaBu4llD+9uVNmk69LdlF3IiUegw3iYU2SHYTYeYjUGp0z8MzSRBbGljZSA8\r\nYWxpY2VAZ3VhcmFuaS5ibG9ja2NoYWluLmJpej7CeAQQEwgAIAUCXtQx/QYL\r\nCQcIAwIEFQgKAgQWAgEAAhkBAhsDAh4BAAoJEIcbQ25/EJZHN40A/AwHx9ji\r\nPgiF2EjonbbplgDJejDksXpCt4jX42HbiYc4AP9cMtDyPjxXb5Ji4rRKXyTU\r\naOUZN/W/STlsmDsh4om5E85TBF7UMf0SBSuBBAAKAgME2LqtC5fyV54FsEX4\r\nR+wq6hsagAIKHxwF8rEQ9g9ENmLFU1sMcVKQK40Y+pqs4WwJBHlyHDEsI5ZZ\r\ni4AaNRBDiwMBCAfCYQQYEwgACQUCXtQx/QIbDAAKCRCHG0NufxCWR6m3AP9n\r\nKT1msMzE6N25q+Nr5+P9jvGd5R2Io9zpFVPMLaMokAEA4E1nQx7nqAmmHLNk\r\na17JFHUKkoBrcfagwG/ukE+n/c0=\r\n=YUXG\r\n-----END PGP PUBLIC KEY BLOCK-----\r\n"
+            },
+            "password": "-----BEGIN PGP MESSAGE-----\r\nVersion: OpenPGP.js v4.10.1\r\nComment: https://openpgpjs.org\r\n\r\nwX4D84QlmaS8DFISAgMEq3GRxwEebC42v+aYWMdr+cFu35PA3Sn7ire3C8WU\r\nYXpzxKFkt8xftb2H7HAh/g0jxO2elWvQ2c8UGNi4W5muozDk3Njyz9wxaQTD\r\noOmKalQFpcr0Aa0CdEoU/fx86FfC205lF90VnVQtuAe/n6fTz5fSwBoBFptg\r\nJs6dWtkcKxlBbu3ReoBg21FG06X9T69V6nX7oW+f2hQVjjayURPvjlZGydzl\r\nfTKAphUIDyJX/SKt44xQ/1g0GC3ybwEskwB4PaJJ/w9ec1oHovMclxD5UZKx\r\nwnO7PRh3ONeZkNlrDTFIOTPENANOyaDoGQ8ttpuV7z/zhFhKhx3QNfW4CeaP\r\nOcVHP37KlhF3FMRquRDc1k3ojRth6S38gF7TbOxnG1x2HP0ahxkaLTyhhcGR\r\noUpLpYbesk50dCLccCbVM4ChrELpNPoV844aXbVuRImzlg==\r\n=CRce\r\n-----END PGP MESSAGE-----\r\n",
+            "publicId": "c66e890aa3ed0af4f738549f785f8fcebaa3ea7cff26eaf1502d05c0bb1f1a03",
+            "signatureOfUserInfos": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.1\r\nComment: https://openpgpjs.org\r\n\r\nwl4EARMIAAYFAl8OdXYACgkQhxtDbn8Qlke+BQD9HAG5+UTuwWk3sX+2EmoU\r\node81tRKlLAwYBy/6MyhyWEBAJXiMQYHfiKCIPeCNnCD/cyZCNiSqDdiDAnR\r\n61F1QLLW\r\n=vp7O\r\n-----END PGP SIGNATURE-----\r\n",
+            "type": "PGP",
+            "userId": {
+                "MSP": "GuaraniMSP",
+                "X509": "User2@guarani.blockchain.biz",
+                "email": "alice@guarani.blockchain.biz",
+                "name": "Alice",
+                "organization": "Guarani"
+            },
+            "version": 1
+        }
+    ],
+    "recipientsHash": "ac86a8092dec888bd747138ddc0c37b266ec757dac87d4d807436ee56ab91b4d",
+    "recipientsHashSignedByIssuer": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.1\r\nComment: https://openpgpjs.org\r\n\r\nwl4EARMIAAYFAl8OdXoACgkQhxtDbn8QlkdmvgEAw5sMpGiixnx4rKAZmQsX\r\ni812J2v8aEhslENT56nwsxwBAJ2mX3YQQMzdDMCWYvozcVC6hNo5QDmQs4tz\r\ng27usLTM\r\n=bP9u\r\n-----END PGP SIGNATURE-----\r\n",
+    "recipientsHashSignedByValidator": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.1\r\nComment: https://openpgpjs.org\r\n\r\nwl4EARMIAAYFAl8Oe0UACgkQUitaHrdIJWH4tgD+ILpohMCtkj1AWuTgnFJx\r\nN55PDmnYkRF8RzTNHcSV2SYBANaCWjRXIBgllNQZw8MddGTdyh9RmHdJoSVA\r\nQU0X0tB/\r\n=ciAc\r\n-----END PGP SIGNATURE-----\r\n",
+    "fileMessage": {
+        "fileExtName": "6f70128590732cfce65d4546aebcab81",
+        "fileName": "a75e1c498783bc09cc40ac914046628e",
+        "fileSize": "5d6b9f8eaa364404c0c565e4d77bf8bb",
+        "fileType": "ddde15df264befd8e978f829978b4836",
+        "hashSigned": "7f20b448e7d73b32665786f880adc30cbada405ef35eb79f99ed10d5b479007463acf51fefc7fddc81ea4686d2e091428565b1bc1ee36a7eb4c8e023a86b43ade39952fd3783b61b5f676275941b41ea39cc36a890a2c0ef4022000bff9c5ff34f237917821285f21bfe83d9028fd5b68da1115921ed09c640f62d75f55484f9a0a32a9838794d694d756583651e78ad125e12f0bb714e28d745fc4a7fc831cd346b6ec8103332e9bdafd819e7a4b1913651dda43e6184ce7f039837274838be70531db83f12605fecf1be9f1c601dc1bc28dbf84077b1a1637079be647c6d2895e06048bdbe6f109a917b742a7f7f334ec360ed7660655cb2de360450d93503ea13f75f675c1e1ab0252f9f994ba0ca",
+        "message": "111c93e705384442b8085f957dcaf296292553ecde8d01a1754898743b2b7fd3c29b4c5c74ba3d4bd5d1869fa88e3784301c2331cc4c2a5f199092190ab6f4143622406b264ce19472ab3723fe2b8146928562afc4c6743dc9f539e510d9d38cb3917bf4b6b01beaa7dbc5b587ddfbab7acfb5a3bc9996fbbf78f7b8a5dc54efc2f552bdbb8888bf5f9d0f6c572fb3055bade29754f297b46f4f0b377e92d14e7f703c5b0fe5a59d0e6ba092e4f4265915dd5f4a3cd234b9f8374caac311bca11a059cbf96615ab66891c2f2d1d22cd2acd1565045b9e9357475dc14ffc53177767b15b555bd8b34902c3be044fbb4977f9c229aefb76f39699a966f3e73d1534f0c0be2965128829b9be6d471ccb405adfde58ea21a2dfb22d465d743db16e188e55918eff2c5381886dfbe47fc25f44fc061dfadaf9984aa540c146aadc9f0018d4891161e2b7def608e1646f9e858043857fa81b1d609bf744def3a8e7a9438230e6d2e3213fdbfea6359200b66dc36620d0b38e5a4babd2853eb6311a229880bcba5edfc70aae5bd49ff13b8a9eb037f47efcf332dd467b175ae38c888046b00b6720c0f4c696f89d874523273cffb55e2b88fa7b97a96da2dcdacc96874184b75719bb03452e7522029377c917fa633196d8a338a134f628da3c206786146f56788196e2053ea3a2eb333f1399ff90f1b02fac965696b6cb5cc57e88eee5bf05d222ac1daca619847de6fba87feab7e6fcecf3342ef0833c1b225d9b91a606fbbe4c2644b8661a435e9321182e097a2ad6cdc131da84bd803b9f28318fee85d398b6233e4dce5524a435660b932ef1e275e08fda23aca681f9fd6ecbf1f2d9efc475e9db45de605dcee7d6f6d8631307be1450e5a465aa2254039cf0d9e93a33f270d49ddc42e7a08caf9434b10e0de92fae6e4f79451813e855b8e6b5c364d73a4a47f99b9d1239642152667a79e074f3cb7a7cad6708d557b548acb8b19b00ba43478cb86e25cae6e3df5adc8af439a1b7f7b8e6355850af1169745fc97a9a24846083ac62279f52439d230b89fe00d5cfb25df01972814902cbcc1bbcc38e3d3a25410871b7e0c71f3bf2e00169b87b0309c603d26dc90771bd33744401e88fa4017e49222fc43e458caacf5e2d38048dea44cbbc96a0e6bcafe2405ba067def4fa83dc419c3b9a2f1a74596d8481e366b4e37ff832ba64e7bcfd05a3ee6327f8e62458a350f89b47d305d1ceefd16fab6705792b8424074b36a7e05b0e4e8af1c83e6a9de62c304b1e44972828d907cd99c6f6e93f2d427cd4498516863876e0f5268047bd55732eddb9759eb2ef13d0fd82598d5a3bc18e4611d51f346384c38cd636f56c95a4f23e32d120c630e9fe1e3bd80554c8f99090ed77d3cb844c93e89b34b600ccde109788d7f3803bbb884d567f7e016e48f659f9d3b3d447aa19c03dc2eb39612ef975b9a10179a3736350fa44d4533ae376821dfe9cc5b8c8deace69bdd5839a9879bee9f9551fe42c37dced307a0e2e35dfa86ea507beb99428880fda075d1c7e6c0e81b128441532e80baf384dc3549edbfd98915c9627f1237ee5d292cf000adccffbe845250a80aeec415fe55ce609836441e606f8e53a8994ebfdfc5d9b2f0bac5a62779da8e39adbda08104a2bac3c26d8f2c1b4b6c69756b5a7185eccf3e56b59e522e622bd55f221486af96c118a428cdeab2a0c3dbe427cdb88346a6a0a5579086d718067e136a4c9df63c69e1e5b4906f041d39e8e9b11fc91e2326de4176b71ece6c57e4a1d30496e27b91ef216a9c989e42f4013e48435eb6fbf3267a9a5268ae05b14020620d84392626bcfd7852836948b73266c907f6190ff48bb6667cf4d6cf7249d1fcbbd59663a41b3449a73c30a91863943a9c7a57178159f8a8736ef29f149e1a5575eae860d9c40ad2902a8310f7f7d95f8ebbea0f6a46b7f555d72b64d9f16d5cafeeae84f3ab6fe415e9ec40dadccea7b0e1b7f52047a916ecf11d320299ccf15d97b045fed0f0d318d06e95af91ee924c7aa3eaf4f6961f4a0593e8aaf994924607f40ccd1b66ae464e350417571d4c709eadc11056743118579f5e5cf50dfd58d3d132c1fcf375b3f5c8bb012f6db4aeaf85474b267b3ea79d2260c69490d19293e27622238243cff37bad8ba918f4afa0c88d496327f975cc69fe20bf72dd684737469b1b56868ed73df9ebd9b9ae232ceba230ea50a9fd96220f4fabd794ff602b3f1350adf54168689d44c8b8839f237baaa61be33b3e085b355d444347fb3ec0fa181f6749e738aa51a775fcfb3e16f7aab7f1136e77a2c483b11e932aef1ffe84c3ddce233048a96534e5076dccbbf7aa4023814f2c15338744cfc51dc77bda1ec663fddd501be9ae896fc15436c3ca7f305a2c888d924ad3586c1137e5bff742f98a584ccdbc7fb401cc0cb7aa490edafed7339a313d77337828c54de490e37ea021293c1b278d5f9ca5785ae4f30475c067f19e4912d2176df10528c85e252fdb04f0bafb8609021a78489dfd4cd044dce497b1448e65935fc28bed2e3856b730550c3e9c9ef9ac7482d4a982638ec19cfdc7ca627a502cff3d84e19984795b77b54074eee5fa0e42bef121e35b5829c6074f3ac103ad15da93e08d71e655e7fd3740a778f278f04bffec7a7316b198383b9273d4fac54078e9377e908b26ed81fba49f70aadd61fb34d72eca5ffb3e7ed3180c76e94212f979a55de7dbbd1f6eab4e445d61fa1de0aa9282f457aaad17a82170b6462514aa7e4e23c2e011146d857785ce1361f3e22a69d00c44f6f144bea8194f0929f4d24f86d275713349cfeefa8b6c555cdcd03bdf5877bc409dd72452898fcea172167f4b9f9c2213f3c475870607b5c136f5ccd2d6413f8bd5777e2eba57b4a21ed54410e2733f86778ca6bf2946a17cb3cbae59a47d2ab58001d4db4b813914eec492114a8eaeaa9dad1c0c56b0b67ef8b841558d9d46bb1cba76b02e4712789eccf4bd32dcb24f20461194416fc6fb5c9d5a9dc5db9631a395422873c57",
+        "transportType": "ENCRYPTED"
+    },
+    "merkleRootIssuer": "cf937b5a7cc96cd99df656342077dee77b113b11bcd99c61c6310eee2f4f1e15",
+    "merkleRootValidator": "a7e8803f4e62848df2a7294aacdfa096287f5fd7f9be7968eea88341784c48ee",
+    "status": "REVOKED",
+    "dateTimeLedger": "2020-07-15T04:15:12.529Z",
+    "key": "\"cf937b5a7cc96cd99df656342077dee77b113b11bcd99c61c6310eee2f4f1e15\":\"2020-07-15T03:18:18.417Z\":\"alice@guarani.blockchain.biz\""
+}
