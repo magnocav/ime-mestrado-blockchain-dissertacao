@@ -1,1 +1,2 @@
-crypto-config/*
+crypto-config/ordererOrganizations/*
+crypto-config/peerOrganizations/*
