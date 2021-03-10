@@ -149,8 +149,8 @@ Esta fase de atualização do sistema pode demorar mais de 4 horas para realizar
     ```bash
     $> echo "## bash auto completion configuration" >> ~/.bashrc
     $> echo "source /etc/profile.d/bash_completion.sh" >> ~/.bashrc
-    $> echo "## " >>  ~/.bashrc
-    $> source  ~/.bashrc
+    $> echo "## " >> ~/.bashrc
+    $> source ~/.bashrc
     ```
 
 ### Instalar *cURL*
@@ -247,7 +247,7 @@ Ler as orientações disponíveis em sites na Internet:
 1. Baixar e descompactar arquivos:
 
     ```bash
-    $> cd  ~
+    $> cd ~
     $> wget https://golang.org/dl/go1.12.10.linux-amd64.tar.gz
     $> tar -xvf go1.12.10.linux-amd64.tar.gz
     ```
@@ -267,14 +267,14 @@ Ler as orientações disponíveis em sites na Internet:
 3. Ajustar variáveis de ambiente:
 
     ```bash
-    $> cd  ~
-    $> mkdir  ~/go-work
-    $> echo "# GO Language env begin" >>  ~/.profile
-    $> echo "export GOROOT=/usr/local/go" >>  ~/.profile
-    $> echo "export GOPATH=$HOME/go-work" >>  ~/.profile
-    $> echo "export PATH=$GOROOT/bin:$GOPATH/bin:$PATH" >>  ~/.profile
-    $> echo "# GO Language env end" >>  ~/.profile
-    $> source  ~/.profile
+    $> cd ~
+    $> mkdir ~/go-work
+    $> echo "# GO Language env begin" >> ~/.profile
+    $> echo "export GOROOT=/usr/local/go" >> ~/.profile
+    $> echo "export GOPATH=$HOME/go-work" >> ~/.profile
+    $> echo "export PATH=$GOROOT/bin:$GOPATH/bin:$PATH" >> ~/.profile
+    $> echo "# GO Language env end" >> ~/.profile
+    $> source ~/.profile
     $> go version
     ```
 
@@ -420,7 +420,7 @@ Primeiro verifique qual é o identificador da versão mais recente, para poder a
 2. Baixar script de instalação NVM. Altere a URL para a versão mais recente:
 
     ```bash
-    $> cd  ~
+    $> cd ~
     $> curl -sL "https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh" -o install_nvm.sh
     ```
 
@@ -431,7 +431,7 @@ Primeiro verifique qual é o identificador da versão mais recente, para poder a
     ```
 
 4. Executar o script bash.
-    * O script instalará o software em um subdiretório do seu diretório home em  "~/.nvm", e também adicionará as linhas necessárias no seu arquivo  ~/.profile para usar o as variáveis de ambiente no sistema:
+    * O script instalará o software em um subdiretório do seu diretório home em  _"~/.nvm"_, e também adicionará as linhas necessárias no seu arquivo _"~/.profile"_ para usar o as variáveis de ambiente no sistema:
 
     ```bash
     $> bash install_nvm.sh
@@ -442,7 +442,7 @@ Primeiro verifique qual é o identificador da versão mais recente, para poder a
 6. Recarregar suas variáveis de ambiente:
 
     ```bash
-    $> source  ~/.profile
+    $> source ~/.profile
     ```
 
 7. Verificar a versão instalada do NVM:
@@ -521,14 +521,14 @@ Primeiro verifique qual é o identificador da versão mais recente, para poder a
         "description":"NPM Modules for Hyperledger Fabric",
         "main":"index.js",
         "scripts":{
-        "test":"npm -v",
-        "keywords":[
-        "hyperledger",
-        "fabric",
-        "node"
-        ],
-        "author":"",
-        "license":"ISC"
+            "test":"npm -v",
+            "keywords":[
+                "hyperledger",
+                "fabric",
+                "node"
+            ],
+            "author":"",
+            "license":"ISC"
         }
     }
     ```
@@ -627,7 +627,7 @@ Biblioteca [Crypto.js](https://nodejs.org/docs/latest-v10.x/api/crypto.html)
 * Comandos a serem executados:
 
     ```bash
-    $> cd  ~
+    $> cd ~
     $> sudo apt install -y jq
     $> jq --version
     ```
@@ -671,7 +671,7 @@ Biblioteca [Crypto.js](https://nodejs.org/docs/latest-v10.x/api/crypto.html)
 1. Mover para o diretório para o repositório:
 
     ```bash
-    $> cd  ~/hyperledger
+    $> cd ~/hyperledger
     ```
 
 2. Verificar e REMOVER as imagens Docker já existentes:
@@ -704,7 +704,7 @@ Biblioteca [Crypto.js](https://nodejs.org/docs/latest-v10.x/api/crypto.html)
 6. Checkout do Java OpenSDK a partir do [repositório no GitHub](https://github.com/hyperledger/fabric-sdk-java):
 
     ```bash
-    $> cd  ~/hyperledger
+    $> cd ~/hyperledger
     $> git clone https://github.com/hyperledger/fabric-sdk-java.git
     $> ls fabric-sdk-java
     ```
@@ -712,7 +712,7 @@ Biblioteca [Crypto.js](https://nodejs.org/docs/latest-v10.x/api/crypto.html)
 7. Checkout do Node.js SDK a partir do [repositório no GitHub](https://github.com/hyperledger/fabric-sdk-node). Informações adicionais estão em [SDK Node 1.4](https://fabric-sdk-node.github.io/release-1.4/index.html)
 
     ```bash
-    $> cd  ~/hyperledger
+    $> cd ~/hyperledger
     $> git clone https://github.com/hyperledger/fabric-sdk-node.git
     $> ls fabric-sdk-node
     ```
@@ -731,12 +731,12 @@ Dica: Edite o arquivo com o comando *nano .profile* para corrigir/ajustar o cont
 * Comandos a serem executados:
 
     ```bash
-    $> cd  ~
-    $> echo "# HYPERLEDGER FABRIC env begin" >>  ~/.profile
-    $> echo "export FABRICSAMPLES=$HOME/hyperledger/fabric-samples" >>  ~/.profile
-    $> echo "export PATH=$FABRICSAMPLES/bin:$PATH" >>  ~/.profile
-    $> echo "# HYPERLEDGER FABRIC env end" >>  ~/.profile
-    $> source  ~/.profile
+    $> cd ~
+    $> echo "# HYPERLEDGER FABRIC env begin" >> ~/.profile
+    $> echo "export FABRICSAMPLES=$HOME/hyperledger/fabric-samples" >> ~/.profile
+    $> echo "export PATH=$FABRICSAMPLES/bin:$PATH" >> ~/.profile
+    $> echo "# HYPERLEDGER FABRIC env end" >> ~/.profile
+    $> source ~/.profile
     ```
 
 ### Instalar Fabric-CA (server + client)
@@ -744,7 +744,7 @@ Dica: Edite o arquivo com o comando *nano .profile* para corrigir/ajustar o cont
 * Comandos a serem executados:
 
     ```bash
-    $> cd  ~
+    $> cd ~
     $> go get -u github.com/hyperledger/fabric-ca/cmd/
     ```
 
@@ -762,7 +762,7 @@ Dica: Edite o arquivo com o comando *nano .profile* para corrigir/ajustar o cont
 1. Testar Criação de um Bloco Gênesis com a _First Network_:
 
     ```bash
-    $> cd  ~/hyperledger/fabric-samples/first-network
+    $> cd ~/hyperledger/fabric-samples/first-network
     $> ./byfn.sh generate
     $> ./byfn.sh up
     ```
@@ -784,7 +784,7 @@ Dica: Edite o arquivo com o comando *nano .profile* para corrigir/ajustar o cont
 1. Preparar (Leia as instruções do README.md do Hyperledger Fabric):
 
     ```bash
-    $> cd  ~/hyperledger/fabric-samples/basic-network
+    $> cd ~/hyperledger/fabric-samples/basic-network
     $> cat README.md
     ```
 
