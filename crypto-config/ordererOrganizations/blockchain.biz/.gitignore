@@ -1,7 +1,0 @@
-ca/*
-msp/admincerts/*
-msp/cacerts/*
-msp/tlscacerts/*
-orderers/*
-tlsca/*
-users/*
