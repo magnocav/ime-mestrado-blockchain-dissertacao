@@ -7,7 +7,7 @@
 #
 
 echo "Remove previous crypto material and configurations"
-sudo rm -rf ./../crypto-config/*
+sudo rm -rf ./../crypto-config/*Organizations
 
 echo "Generating crypto-material for organizations"
 cryptogen generate --config=./crypto-config.yaml --output=./../crypto-config
