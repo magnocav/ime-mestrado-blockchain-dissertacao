@@ -10,7 +10,7 @@
 
 * Magno Alves Cavalcante
 
-### Orientador(es)
+### Orientadores
 
 * José Antônio Moreira Xexéo, D.Sc. e 
 * Anderson Fernandes Pereira dos Santos, D.Sc.
